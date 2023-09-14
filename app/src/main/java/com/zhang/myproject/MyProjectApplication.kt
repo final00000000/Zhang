@@ -2,6 +2,7 @@ package com.zhang.myproject
 
 import android.app.Application
 import android.content.Context
+import com.amap.api.location.AMapLocationClient
 import com.tencent.mmkv.BuildConfig
 import com.tencent.mmkv.MMKV
 import com.zhang.myproject.base.manager.ActivityManager
@@ -27,6 +28,7 @@ class MyProjectApplication : Application() {
         initTimber()
         initActivityManager()
         initRefreshStyle()
+        initAMap()
     }
 
     /**
@@ -63,6 +65,10 @@ class MyProjectApplication : Application() {
           SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
               ClassicsFooter(context)
           }*/
+    }
+    private fun initAMap(){
+        AMapLocationClient.updatePrivacyShow(this, true, true)
+        AMapLocationClient.updatePrivacyAgree(this, true)
     }
 
 }
