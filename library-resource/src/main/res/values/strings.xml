@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">MyProject</string>
+    <string name="amap_key">665f89be135c8315889b4ec337a95298</string>
+
+
+    <!-- 首页tab-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_mine">我的</string>
+
+</resources>

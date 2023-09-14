@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: '../common.gradle'
+
+android {
+    namespace 'com.zhang.depend'
+
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    /*  这样会有依赖更新提醒  */
+
+    api 'androidx.core:core-ktx:1.10.1'
+    api 'androidx.appcompat:appcompat:1.6.1'
+    api 'com.google.android.material:material:1.8.0'
+    api 'androidx.activity:activity-ktx:1.7.0'
+    api 'androidx.fragment:fragment-ktx:1.6.0'
+    testApi 'junit:junit:4.13.2'
+    androidTestApi 'androidx.test.ext:junit:1.1.5'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //沉浸式      https://github.com/gyf-dev/ImmersionBar
+    api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    // kotlin扩展（可选）
+    api 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+
+    // 高德3D地图-导航-搜索-定位
+    api 'com.amap.api:3dmap:9.8.2'
+    api 'com.amap.api:search:9.7.0'
+
+    // MMkv   https://github.com/Tencent/MMKV
+    api 'com.tencent:mmkv:1.3.1'
+
+    // 日志打印框架   https://github.com/naman14/Timber
+    api "com.jakewharton.timber:timber:5.0.1"
+
+    // LiveData处理数据倒灌   https://github.com/KunMinX/UnPeek-LiveData
+    api 'com.kunminx.arch:unpeek-livedata:7.8.0'
+
+    // 协程  https://github.com/Kotlin/kotlinx.coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+
+    // okhttp  https://github.com/square/okhttp
+    api 'com.squareup.okhttp3:okhttp:4.11.0' // 要求OkHttp4以上
+
+    // 网络请求  https://github.com/liangjingkanji/Net
+    api 'com.github.liangjingkanji:Net:3.6.1'
+
+    // 刷新框架  https://github.com/scwang90/SmartRefreshLayout
+    api 'io.github.scwang90:refresh-layout-kernel:2.0.6'
+
+    // ViewModel
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+
+    // Lifecycle
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    // Coil   https://github.com/coil-kt/coil
+    api "io.coil-kt:coil:2.4.0"
+    api "io.coil-kt:coil-gif:2.4.0"
+
+    // fastJson   https://github.com/alibaba/fastjson
+    api "com.alibaba:fastjson:1.2.51"
+
+    // tabLayout  https://github.com/angcyo/DslTabLayout
+    api 'com.github.angcyo.DslTablayout:TabLayout:3.5.5'
+    api 'com.github.angcyo.DslTablayout:ViewPager2Delegate:3.5.5'
+
+    // Gson  https://github.com/google/gson
+    api 'com.google.code.gson:gson:2.10.1'
+}

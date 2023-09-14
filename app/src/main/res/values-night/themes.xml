@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <!-- Base application theme. -->
+    <style name="Theme.MyProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_F5F6FA_0F1012</item>
+        <item name="colorPrimaryVariant">@color/color_F5F6FA_0F1012</item>
+        <item name="colorOnPrimary">@color/color_F5F6FA_0F1012</item>
+        <!--   引入字体库     -->
+        <!--        <item name="android:fontFamily">@font/pingfang</item>-->
+        <item name="colorSecondary">@color/color_F5F6FA_0F1012</item>
+        <item name="colorSecondaryVariant">@color/color_F5F6FA_0F1012</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!--        避免自动转换为大写-->
+        <item name="textAllCaps">false</item>
+    </style>
+</resources>

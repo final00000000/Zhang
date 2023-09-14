@@ -1,0 +1,1 @@
+C:\Users\Farben\Desktop\work\project\MyProject\buildSrc\build\classes\kotlin\main\com\zhang\buildSrc\AndroidConfig.class

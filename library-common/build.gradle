@@ -1,0 +1,31 @@
+import com.zhang.buildSrc.*
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+apply from: '../common.gradle'
+
+android {
+    namespace 'com.zhang.myproject.common'
+
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // 资源
+    api project(':library-resource')
+    // 依赖
+    api project(':library-depend')
+
+}
