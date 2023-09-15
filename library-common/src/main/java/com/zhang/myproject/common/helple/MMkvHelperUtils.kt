@@ -12,14 +12,14 @@ object MMkvHelperUtils {
 
 
     /**
-     * 设置主题是否跟随系统模式
+     * 设置手机陀螺仪方向角度
      */
     fun setGyroAngle(angle: Float) {
         MmkvHelper.getInstance().putObject(APPKeyConstant.GYRO_ANGLE, angle)
     }
 
     /**
-     * 设置主题是否跟随系统模式
+     * 获取手机陀螺仪方向角度
      */
     fun getGyroAngle(): Float =
         MmkvHelper.getInstance().getObject(APPKeyConstant.GYRO_ANGLE, Float::class.java) ?: 0f

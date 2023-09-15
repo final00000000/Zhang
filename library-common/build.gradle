@@ -27,5 +27,7 @@ dependencies {
     api project(':library-resource')
     // 依赖
     api project(':library-depend')
+    // 业务相关公共类
+    implementation project(':library-base')
 
 }

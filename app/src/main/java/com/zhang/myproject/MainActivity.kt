@@ -5,14 +5,18 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
+import com.drake.net.utils.TipUtils.toast
 import com.zhang.home.fragment.HomeFragment
 import com.zhang.mine.MineFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
 import com.zhang.myproject.base.activity.BaseNetWorkActivity
+import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.common.helple.MMkvHelperUtils
 import com.zhang.myproject.databinding.ActivityMainBinding
+import java.lang.System.exit
 
 /**
  * Date: 2023/7/6
@@ -26,6 +30,8 @@ class MainActivity :
     override fun isLayoutToolbar(): Boolean = false
 
     private var sensorManager: SensorManager? = null
+
+    private var mExitTime: Long = 0
 
     private var fragmentList = mutableListOf<Fragment>(
         HomeFragment.newInstance(),
@@ -46,6 +52,24 @@ class MainActivity :
     }
 
     override fun createObserver() {
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit()
+            true
+        } else {
+            super.onKeyDown(keyCode, event)
+        }
+    }
+
+    private fun exit() {
+        if (System.currentTimeMillis() - mExitTime > 2000) {
+            toast("再按一次退出应用")
+            mExitTime = System.currentTimeMillis()
+        } else {
+            ActivityManager.instance.finishAllActivity()
+        }
     }
 
     override fun onResume() {

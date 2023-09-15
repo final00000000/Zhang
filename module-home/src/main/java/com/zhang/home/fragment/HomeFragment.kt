@@ -1,10 +1,8 @@
 package com.zhang.home.fragment
 
-import android.Manifest
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
@@ -19,12 +17,12 @@ import com.amap.api.maps.model.Marker
 import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.MyLocationStyle
 import com.makeramen.roundedimageview.RoundedImageView
-import com.permissionx.guolindev.PermissionX
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
 import com.zhang.myproject.base.fragment.BaseFragment
-import com.zhang.myproject.base.utils.AutoSizeUtils
 import com.zhang.myproject.common.helple.MMkvHelperUtils
+import com.zhang.myproject.common.utils.PermissionUtils.checkLocationPermission
+import me.jessyan.autosize.utils.AutoSizeUtils
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
     AMapLocationListener {
@@ -45,22 +43,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
-            val list = mutableListOf(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            PermissionX.init(this@HomeFragment).permissions(list)
-                .request { allGranted, _, deniedList ->
-                    if (allGranted) {
-                        initMap(savedInstanceState)
-                    } else {
-                        Toast.makeText(
-                            requireActivity(),
-                            "这些权限被拒绝: $deniedList",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
+            initMap(savedInstanceState)
+
         }
     }
 
@@ -79,9 +63,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
     private fun initMap(savedInstanceState: Bundle?) {
         mViewBinding.apply {
             mapView.onCreate(savedInstanceState)
-            mapSetting()
             aMap = mapView.map
             aMap?.isTrafficEnabled = false
+            mapSetting()
             try {
                 mLocationClient = AMapLocationClient(requireContext())
             } catch (e: Exception) {
@@ -135,7 +119,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
      * 开启定位
      */
     private fun startLocation() {
-        mLocationClient?.startLocation()
+        if (checkLocationPermission()) {
+            mLocationClient?.startLocation()
+        }
     }
 
     override fun onLocationChanged(p0: AMapLocation?) {
