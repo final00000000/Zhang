@@ -9,14 +9,18 @@ import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.drake.net.utils.TipUtils.toast
+import com.hjq.permissions.XXPermissions
 import com.zhang.home.fragment.HomeFragment
 import com.zhang.mine.MineFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
 import com.zhang.myproject.base.activity.BaseNetWorkActivity
 import com.zhang.myproject.base.manager.ActivityManager
+import com.zhang.myproject.base.utils.toast.Toasty
 import com.zhang.myproject.common.helple.MMkvHelperUtils
+import com.zhang.myproject.common.helple.PermissionConstant
+import com.zhang.myproject.common.utils.MainHandlerUtils
+import com.zhang.myproject.common.utils.PermissionUtils.checkLocationPermission
 import com.zhang.myproject.databinding.ActivityMainBinding
-import java.lang.System.exit
 
 /**
  * Date: 2023/7/6
@@ -40,11 +44,26 @@ class MainActivity :
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
+//            ImmersionBar.with(this@MainActivity)
+//                .fitsSystemWindows(false)
+//                .statusBarDarkFont(true, 0.2f)
+//                .init()
             ViewPager2Delegate.install(mainViewPager, tabLayout)
 
             val viewPager2Adapter = ViewPager2Adapter(this@MainActivity, fragmentList)
             mainViewPager.isUserInputEnabled = false
             mainViewPager.adapter = viewPager2Adapter
+            checkLocationPermission {
+                if (!it) {
+                    MainHandlerUtils.postDelay(2000) {
+                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        XXPermissions.startPermissionActivity(
+                            this@MainActivity,
+                            PermissionConstant.locationList
+                        )
+                    }
+                }
+            }
         }
     }
 
@@ -65,7 +84,7 @@ class MainActivity :
 
     private fun exit() {
         if (System.currentTimeMillis() - mExitTime > 2000) {
-            toast("再按一次退出应用")
+            Toasty.info("再按一次退出应用")
             mExitTime = System.currentTimeMillis()
         } else {
             ActivityManager.instance.finishAllActivity()

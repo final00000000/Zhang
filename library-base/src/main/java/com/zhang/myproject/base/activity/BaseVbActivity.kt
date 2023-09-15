@@ -36,19 +36,14 @@ abstract class BaseVbActivity<VB : ViewBinding> : AppCompatActivity() {
      */
     open fun onNetworkStateChanged(netState: NetWorkState) {}
 
-    /**
-     * @param true：浅色模式 false：深色模式
-     */
-    var systemColorMode: Boolean? = null
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
+/*    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-            /** 浅色模式*/
+            *//** 浅色模式*//*
             Configuration.UI_MODE_NIGHT_NO -> {
                 systemColorMode = true
             }
-            /** 深色模式*/
+            *//** 深色模式*//*
             Configuration.UI_MODE_NIGHT_YES -> {
                 //初始化设置沉浸式状态栏
                 systemColorMode = false
@@ -56,5 +51,5 @@ abstract class BaseVbActivity<VB : ViewBinding> : AppCompatActivity() {
 
             else -> {}
         }
-    }
+    }*/
 }

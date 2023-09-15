@@ -11,6 +11,7 @@ import com.gyf.immersionbar.ImmersionBar
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.data.NetWorkState
 import com.zhang.myproject.base.manager.NetworkManager
+import com.zhang.myproject.base.utils.SystemModelUtils
 import com.zhang.myproject.base.utils.singleClick
 
 /**
@@ -78,12 +79,10 @@ abstract class BaseNetWorkActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes 
      * 初始化设置沉浸式状态栏
      */
     private fun initImmersionBar() {
-        systemColorMode?.let {
-            ImmersionBar.with(this)
-                .fitsSystemWindows(false)
-                .statusBarDarkFont(it, 0.2f)
-                .init()
-        }
+        ImmersionBar.with(this)
+            .fitsSystemWindows(false)
+            .statusBarDarkFont(true, 0.2f)
+            .init()
     }
 
     private fun killMyself() {

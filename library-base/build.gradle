@@ -21,7 +21,7 @@ android {
 
 dependencies {
     // 资源
-    implementation project(':library-resource')
+    api project(':library-resource')
     // 依赖
-    implementation project(':library-depend')
+    api project(':library-depend')
 }

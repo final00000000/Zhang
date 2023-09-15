@@ -16,6 +16,7 @@ import com.amap.api.maps.model.LatLng
 import com.amap.api.maps.model.Marker
 import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.MyLocationStyle
+import com.hjq.permissions.XXPermissions
 import com.makeramen.roundedimageview.RoundedImageView
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
@@ -44,7 +45,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
             initMap(savedInstanceState)
-
         }
     }
 
@@ -119,9 +119,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
      * 开启定位
      */
     private fun startLocation() {
-        if (checkLocationPermission()) {
-            mLocationClient?.startLocation()
-        }
+        mLocationClient?.startLocation()
     }
 
     override fun onLocationChanged(p0: AMapLocation?) {

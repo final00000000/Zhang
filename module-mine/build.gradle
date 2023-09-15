@@ -25,11 +25,4 @@ android {
 dependencies {
     // 业务相关公共类
     implementation project(':library-common')
-    // 资源
-    implementation project(':library-resource')
-    // 依赖
-    implementation project(':library-depend')
-
-    implementation project(':library-base')
-
 }

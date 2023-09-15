@@ -8,6 +8,7 @@ import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.IsBase
+import com.zhang.myproject.base.utils.SystemModelUtils
 import com.zhang.myproject.base.utils.singleClick
 
 
@@ -64,11 +65,9 @@ abstract class BaseActivity<VB : ViewBinding>(@LayoutRes layoutId: Int) :
      * 初始化设置沉浸式状态栏
      */
     private fun initImmersionBar() {
-        systemColorMode?.let {
-            ImmersionBar.with(this)
-                .statusBarDarkFont(it, 0.2f)
-                .init()
-        }
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true, 0.2f)
+            .init()
     }
 
 

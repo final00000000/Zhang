@@ -6,8 +6,18 @@ package com.zhang.myproject.common.constant
  * Description :
  */
 interface APPKeyConstant {
-    companion object{
+    companion object {
         // 手机陀螺仪角度
-        const val GYRO_ANGLE="gyro_angle"
+        const val GYRO_ANGLE = "gyro_angle"
+
+        /**
+         * 是否是跟随系统主题色
+         */
+        const val AUTO_MODEL = "auto_model"
+
+        /**
+         * 是否是亮色主题色
+         */
+        const val NIGHT_MODEL = "night_model"
     }
 }
