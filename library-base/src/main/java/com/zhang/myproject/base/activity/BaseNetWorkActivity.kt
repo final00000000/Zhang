@@ -2,10 +2,12 @@ package com.zhang.myproject.base.activity
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.zhang.myproject.base.R
@@ -70,10 +72,33 @@ abstract class BaseNetWorkActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes 
 
     protected abstract fun createObserver()
 
+
+    override fun startLoading() {
+
+    }
+
+    override fun finishLoading() {
+
+    }
+
+    override fun showEmptyView() {
+
+    }
+
+    override fun showNoNetWorkView(netWorkSuccess: Boolean?) {
+        netWorkSuccess?.let {
+            if (!it) {
+
+            }
+        }
+    }
+
     /**
      * 网络变化监听 子类重写
      */
-    override fun onNetworkStateChanged(netState: NetWorkState) {}
+    override fun onNetworkStateChanged(netState: NetWorkState) {
+        showNoNetWorkView(netState.isSuccess)
+    }
 
     /**
      * 初始化设置沉浸式状态栏

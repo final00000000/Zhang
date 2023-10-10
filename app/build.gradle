@@ -96,5 +96,7 @@ dependencies {
 
     /** 业务 module */
     implementation project(':module-home')
+    implementation project(':module-found')
+    implementation project(':module-amap')
     implementation project(':module-mine')
 }

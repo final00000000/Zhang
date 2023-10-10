@@ -8,8 +8,9 @@ import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
-import com.drake.net.utils.TipUtils.toast
 import com.hjq.permissions.XXPermissions
+import com.zhang.amap.AMapFragment
+import com.zhang.found.FoundFragment
 import com.zhang.home.fragment.HomeFragment
 import com.zhang.mine.MineFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
@@ -39,6 +40,8 @@ class MainActivity :
 
     private var fragmentList = mutableListOf<Fragment>(
         HomeFragment.newInstance(),
+        FoundFragment.newInstance(),
+        AMapFragment.newInstance(),
         MineFragment.newInstance(),
     )
 

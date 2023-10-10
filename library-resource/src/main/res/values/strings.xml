@@ -6,6 +6,9 @@
 
     <!-- 首页tab-->
     <string name="main_tab_home">首页</string>
+    <string name="main_tab_found">发现</string>
+    <string name="main_tab_search">搜索</string>
+    <string name="main_tab_map">地图</string>
     <string name="main_tab_mine">我的</string>
 
 </resources>

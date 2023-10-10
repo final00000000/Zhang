@@ -25,8 +25,7 @@ import com.zhang.myproject.common.helple.MMkvHelperUtils
 import com.zhang.myproject.common.utils.PermissionUtils.checkLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
-    AMapLocationListener {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
     companion object {
         @JvmStatic
@@ -34,17 +33,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
             HomeFragment().apply { arguments = Bundle().apply {} }
     }
 
-    private var aMap: AMap? = null
-
-    private var mLocationClient: AMapLocationClient? = null
-
-    private var mLocationMarker: Marker? = null
-
-    private var mLatLng: LatLng? = null
-
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
-            initMap(savedInstanceState)
         }
     }
 
@@ -57,123 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home),
     override fun setOnViewClick() {
         mViewBinding.apply {
 
-        }
-    }
-
-    private fun initMap(savedInstanceState: Bundle?) {
-        mViewBinding.apply {
-            mapView.onCreate(savedInstanceState)
-            aMap = mapView.map
-            aMap?.isTrafficEnabled = false
-            mapSetting()
-            try {
-                mLocationClient = AMapLocationClient(requireContext())
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            initLocation()
-        }
-    }
-
-    private fun initLocation() {
-        stopLocation()
-        val myLocationStyle = MyLocationStyle()
-        myLocationStyle.showMyLocation(true)
-        // 圆圈的边框颜色
-        myLocationStyle.strokeColor(Color.TRANSPARENT)
-        // 圆圈的填充颜色
-        myLocationStyle.radiusFillColor(Color.TRANSPARENT)
-        // 圆圈的边框宽度
-        myLocationStyle.strokeWidth(0f)
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER)
-        aMap?.myLocationStyle = myLocationStyle
-        aMap?.isMyLocationEnabled = false
-        mLocationClient?.setLocationListener(this)
-        val locationOption = AMapLocationClientOption()
-        locationOption.locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
-        locationOption.isOnceLocation = true
-        locationOption.isOnceLocationLatest = true
-        locationOption.interval = 1000
-        locationOption.isSensorEnable = true
-        mLocationClient?.setLocationOption(locationOption)
-        startLocation()
-    }
-
-    private fun mapSetting() {
-        mViewBinding.apply {
-            aMap?.uiSettings?.apply {
-                isZoomControlsEnabled = false
-                isRotateGesturesEnabled = false
-                isTiltGesturesEnabled = false
-                logoPosition = AMapOptions.LOGO_POSITION_BOTTOM_CENTER
-                setLogoBottomMargin(AutoSizeUtils.dp2px(requireActivity(), -20f))
-            }
-        }
-    }
-
-    private fun stopLocation() {
-        mLocationClient?.stopLocation()
-    }
-
-    /**
-     * 开启定位
-     */
-    private fun startLocation() {
-        mLocationClient?.startLocation()
-    }
-
-    override fun onLocationChanged(p0: AMapLocation?) {
-        p0?.let {
-            mLatLng = LatLng(it.latitude, it.longitude)
-            updateLocationMarker(mLatLng)
-            aMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(mLatLng, 17f))
-        }
-    }
-
-    private fun updateLocationMarker(latLng: LatLng?) {
-        mLocationMarker?.run {
-            latLng?.run {
-                position = latLng
-            }
-        } ?: kotlin.run {
-            latLng?.run {
-                mLocationMarker = aMap?.addMarker(
-                    MarkerOptions().anchor(0.5f, 0.5f).position(mLatLng)
-                        .icon(BitmapDescriptorFactory.fromView(getLocationMarkerView(MMkvHelperUtils.getGyroAngle())))
-                )
-            }
-        }
-    }
-
-    private fun getLocationMarkerView(angle: Float): View {
-        val view = View.inflate(requireActivity(), R.layout.layout_map_marker_view, null)
-        val pointerView = view.findViewById<AppCompatImageView>(R.id.iv_pointer)
-        val headerView = view.findViewById<RoundedImageView>(R.id.iv_head)
-//        headerDrawable?.run {
-//            headerView.setImageDrawable(headerDrawable)
-//        }
-        pointerView.rotation = angle
-        return view
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mViewBinding.apply {
-            mapView.onResume()
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mViewBinding.apply {
-            mapView.onPause()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mViewBinding.apply {
-            mapView.onDestroy()
         }
     }
 

@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/library-common" />
             <option value="$PROJECT_DIR$/library-depend" />
             <option value="$PROJECT_DIR$/library-resource" />
+            <option value="$PROJECT_DIR$/module-amap" />
+            <option value="$PROJECT_DIR$/module-found" />
             <option value="$PROJECT_DIR$/module-home" />
             <option value="$PROJECT_DIR$/module-mine" />
           </set>

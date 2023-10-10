@@ -22,10 +22,7 @@ android {
 }
 
 dependencies {
-
-    // 屏幕适配            https://github.com/intuit/sdp
-    //api "com.intuit.sdp:sdp-android:1.1.0"
-    //      https://github.com/JessYanCoding/AndroidAutoSize
-    api "com.github.JessYanCoding:AndroidAutoSize:v1.2.1"
+    // 业务相关公共类
+    implementation project(':library-depend')
 
 }

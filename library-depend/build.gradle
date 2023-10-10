@@ -26,12 +26,15 @@ dependencies {
 
     api 'androidx.core:core-ktx:1.10.1'
     api 'androidx.appcompat:appcompat:1.6.1'
-    api 'com.google.android.material:material:1.8.0'
-    api 'androidx.activity:activity-ktx:1.7.0'
-    api 'androidx.fragment:fragment-ktx:1.6.0'
+    api 'com.google.android.material:material:1.9.0'
+    api 'androidx.activity:activity-ktx:1.7.2'
+    api 'androidx.fragment:fragment-ktx:1.6.1'
     testApi 'junit:junit:4.13.2'
     androidTestApi 'androidx.test.ext:junit:1.1.5'
     androidTestApi 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // 约束布局 https://github.com/androidx/constraintlayout
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     //沉浸式      https://github.com/gyf-dev/ImmersionBar
     api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
@@ -78,7 +81,7 @@ dependencies {
     api "io.coil-kt:coil-gif:2.4.0"
 
     // fastJson   https://github.com/alibaba/fastjson
-    api "com.alibaba:fastjson:1.2.51"
+    api 'com.alibaba:fastjson:2.0.41'
 
     // tabLayout  https://github.com/angcyo/DslTabLayout
     api 'com.github.angcyo.DslTablayout:TabLayout:3.5.5'
@@ -87,9 +90,17 @@ dependencies {
     // Gson  https://github.com/google/gson
     api 'com.google.code.gson:gson:2.10.1'
 
-    // RoundImageView  https://github.com/vinc3m1/RoundedImageView
+    // 圆形图  https://github.com/vinc3m1/RoundedImageView
     api 'com.makeramen:roundedimageview:2.3.0'
 
     // 权限申请            https://github.com/getActivity/XXPermissions
     api "com.github.getActivity:XXPermissions:18.3"
+
+    // Lottie动画         https://github.com/airbnb/lottie-android
+    api "com.airbnb.android:lottie:6.1.0"
+
+    // 屏幕适配            https://github.com/intuit/sdp
+    //api "com.intuit.sdp:sdp-android:1.1.0"
+    //      https://github.com/JessYanCoding/AndroidAutoSize
+    api "com.github.JessYanCoding:AndroidAutoSize:v1.2.1"
 }
