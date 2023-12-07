@@ -20,9 +20,12 @@ import com.hjq.permissions.XXPermissions
 import com.makeramen.roundedimageview.RoundedImageView
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
+import com.zhang.myproject.base.AppGlobals
 import com.zhang.myproject.base.fragment.BaseFragment
+import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.common.helple.MMkvHelperUtils
 import com.zhang.myproject.common.utils.PermissionUtils.checkLocationPermission
+import com.zhang.myproject.common.utils.mApplication
 import me.jessyan.autosize.utils.AutoSizeUtils
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
@@ -35,6 +38,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home){
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
+            tvHome.singleClick {
+            }
         }
     }
 

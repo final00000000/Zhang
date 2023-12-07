@@ -57,6 +57,26 @@ abstract class BaseActivity<VB : ViewBinding>(@LayoutRes layoutId: Int) :
 
     protected abstract fun setOnViewClick()
 
+    override fun startLoading() {
+
+    }
+
+    override fun finishLoading() {
+
+    }
+
+    override fun showEmptyView() {
+
+    }
+
+    override fun showNoNetWorkView(netWorkSuccess: Boolean?) {
+        netWorkSuccess?.let {
+            if (!it) {
+
+            }
+        }
+    }
+
     protected fun killMyself() {
         finish()
     }

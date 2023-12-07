@@ -20,12 +20,6 @@ class MyProjectApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        initMMKV()
-        initTimber()
-        initActivityManager()
-        initRefreshStyle()
-        initAMap()
-        initToasty()
     }
 
 }

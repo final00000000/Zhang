@@ -14,13 +14,11 @@ import timber.log.Timber
  * Description :
  */
 
-var mApplication: Application? = null
-
 /**
  * 初始化Mkv
  */
-fun initMMKV() {
-    MMKV.initialize(mApplication)
+fun Application.initMMKV() {
+    MMKV.initialize(this)
 }
 
 /**
@@ -35,8 +33,15 @@ fun initTimber() {
 /**
  * 初始化Activity生命周期监听
  */
-fun initActivityManager() {
-    mApplication?.let { ActivityManager.instance.init(it) }
+fun Application.initActivityManager() {
+    ActivityManager.instance.init(this)
+}
+
+/**
+ * 初始化toasty
+ */
+fun Application.initToasty() {
+    Toasty.init(this)
 }
 
 /**
@@ -52,11 +57,14 @@ fun initRefreshStyle() {
       }*/
 }
 
-fun initAMap() {
-    AMapLocationClient.updatePrivacyShow(mApplication, true, true)
-    AMapLocationClient.updatePrivacyAgree(mApplication, true)
+/**
+ * 同意隐私政策后初始化
+ */
+fun Application.init() {
+    initAMap()
 }
 
-fun initToasty() {
-    mApplication?.let { Toasty.init(it) }
+private fun Application.initAMap() {
+    AMapLocationClient.updatePrivacyShow(this, true, true)
+    AMapLocationClient.updatePrivacyAgree(this, true)
 }

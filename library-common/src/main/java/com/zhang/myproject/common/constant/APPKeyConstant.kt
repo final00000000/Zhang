@@ -19,5 +19,10 @@ interface APPKeyConstant {
          * 是否是亮色主题色
          */
         const val NIGHT_MODEL = "night_model"
+
+        /**
+         * 是否同意隐私政策
+         */
+        const val CONSENT_TO_PRIVACY = "consent_to_privacy"
     }
 }

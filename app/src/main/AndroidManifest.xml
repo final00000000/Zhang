@@ -14,9 +14,11 @@
         android:theme="@style/Theme.MyProject">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,9 +26,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="@string/amap_key" />
+            android:value="@string/AMap_key" />
 
 
         <!--适配华为（huawei）刘海屏-->
