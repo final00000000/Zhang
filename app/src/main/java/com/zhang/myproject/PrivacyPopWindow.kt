@@ -41,6 +41,10 @@ class PrivacyPopWindow(context: Context, private var success: (Boolean?) -> Unit
         width = (getScreenWidth(context) - dipToPx(32f) * 2).toInt()
         setOutSideDismiss(false)
         setBackPressEnable(false)
+        showAnimation = AnimationHelper.asAnimation()
+            .withTranslation(TranslationConfig().from(Direction.BOTTOM)).toShow()
+        dismissAnimation = AnimationHelper.asAnimation()
+            .withTranslation(TranslationConfig.TO_TOP).toDismiss()
 
         mBinding?.apply {
             tvContent.movementMethod = ClickableMovementMethod.getInstance()

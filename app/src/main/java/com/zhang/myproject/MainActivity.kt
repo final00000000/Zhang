@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
-import com.hjq.permissions.XXPermissions
 import com.zhang.amap.AMapFragment
 import com.zhang.found.FoundFragment
 import com.zhang.home.fragment.HomeFragment
@@ -18,9 +17,6 @@ import com.zhang.myproject.base.activity.BaseNetWorkActivity
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.utils.toast.Toasty
 import com.zhang.myproject.common.helple.MMkvHelperUtils
-import com.zhang.myproject.common.helple.PermissionConstant
-import com.zhang.myproject.common.utils.MainHandlerUtils
-import com.zhang.myproject.common.utils.PermissionUtils.checkLocationPermission
 import com.zhang.myproject.databinding.ActivityMainBinding
 
 /**
@@ -56,14 +52,22 @@ class MainActivity :
             val viewPager2Adapter = ViewPager2Adapter(this@MainActivity, fragmentList)
             mainViewPager.isUserInputEnabled = false
             mainViewPager.adapter = viewPager2Adapter
-            checkLocationPermission {
-                if (!it) {
-                    MainHandlerUtils.postDelay(2000) {
-                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
-                        XXPermissions.startPermissionActivity(
-                            this@MainActivity,
-                            PermissionConstant.locationList
-                        )
+            tabLayout.observeIndexChange { _, toIndex, _, _ ->
+                when (toIndex) {
+                    0 -> {
+
+                    }
+
+                    1 -> {
+
+                    }
+
+                    2 -> {
+
+                    }
+
+                    3 -> {
+
                     }
                 }
             }

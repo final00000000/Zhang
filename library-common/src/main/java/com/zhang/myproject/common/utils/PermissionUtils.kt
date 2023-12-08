@@ -36,7 +36,10 @@ object PermissionUtils {
                 override fun onDenied(permissions: MutableList<String>, doNotAskAgain: Boolean) {
                     if (doNotAskAgain) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                            Toasty.warning("权限被永久拒绝，请手动授予定位权限\n设置为始终允许",LENGTH_LONG)
+                            Toasty.warning(
+                                "权限被永久拒绝，请手动授予定位权限\n设置为始终允许",
+                                LENGTH_LONG
+                            )
                         } else {
                             Toasty.warning("权限被永久拒绝，请手动授予定位权限")
                         }

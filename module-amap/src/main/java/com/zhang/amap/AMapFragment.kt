@@ -16,19 +16,20 @@ import com.amap.api.maps.model.LatLng
 import com.amap.api.maps.model.Marker
 import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.MyLocationStyle
+import com.drake.logcat.LogCat
 import com.makeramen.roundedimageview.RoundedImageView
 import com.zhang.amap.databinding.FragmentAMapBinding
 import com.zhang.myproject.base.fragment.BaseFragment
 import com.zhang.myproject.common.helple.MMkvHelperUtils
 import com.zhang.myproject.common.utils.getDrawableRes
+import com.zhang.myproject.common.utils.requestLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils
 
 class AMapFragment : BaseFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
     AMapLocationListener {
     companion object {
         @JvmStatic
-        fun newInstance() =
-            AMapFragment().apply { arguments = Bundle().apply {} }
+        fun newInstance() = AMapFragment().apply { arguments = Bundle().apply {} }
     }
 
     private var aMap: AMap? = null
@@ -41,7 +42,12 @@ class AMapFragment : BaseFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
-            initMap(savedInstanceState)
+            requireActivity().requestLocationPermission {
+                LogCat.e("测试_47：${it}")
+                if (it) {
+                    initMap(savedInstanceState)
+                }
+            }
         }
 
     }
@@ -145,9 +151,7 @@ class AMapFragment : BaseFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
 
     private fun getLocationMarkerView(angle: Float): View {
         val view = View.inflate(
-            requireActivity(),
-            com.zhang.myproject.resource.R.layout.layout_map_marker_view,
-            null
+            requireActivity(), com.zhang.myproject.resource.R.layout.layout_map_marker_view, null
         )
         val pointerView =
             view.findViewById<AppCompatImageView>(com.zhang.myproject.resource.R.id.iv_pointer)

@@ -2,6 +2,7 @@ package com.zhang.myproject
 
 import android.app.Application
 import com.amap.api.location.AMapLocationClient
+import com.drake.logcat.LogCat
 import com.tencent.mmkv.BuildConfig
 import com.tencent.mmkv.MMKV
 import com.zhang.myproject.base.manager.ActivityManager
@@ -67,4 +68,8 @@ fun Application.init() {
 private fun Application.initAMap() {
     AMapLocationClient.updatePrivacyShow(this, true, true)
     AMapLocationClient.updatePrivacyAgree(this, true)
+}
+
+fun initLogcat(){
+    LogCat.setDebug(BuildConfig.DEBUG) // 全局开关
 }

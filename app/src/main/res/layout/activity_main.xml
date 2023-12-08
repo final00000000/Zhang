@@ -42,7 +42,6 @@
             style="@style/main_tab_style"
             android:text="@string/main_tab_home" />
 
-
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/main_tab_style"
             android:text="@string/main_tab_found" />

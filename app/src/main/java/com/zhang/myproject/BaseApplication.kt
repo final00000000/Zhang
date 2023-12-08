@@ -1,6 +1,7 @@
 package com.zhang.myproject
 
 import android.app.Application
+import com.kongzue.dialogx.DialogX
 import com.zhang.myproject.common.utils.mApplication
 
 /**
@@ -15,7 +16,10 @@ abstract class BaseApplication : Application() {
         initMMKV()
         initActivityManager()
         initToasty()
+        initLogcat()
         initTimber()
+        //初始化
+        DialogX.init(this)
         mApplication = this
     }
 }
