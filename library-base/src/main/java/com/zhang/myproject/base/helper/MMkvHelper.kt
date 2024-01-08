@@ -18,8 +18,9 @@ import org.json.JSONObject
  */
 object MMkvHelper {
 
-    var mMMkv: MMKV = MMKV.defaultMMKV()
+    private var mMMkv: MMKV = MMKV.defaultMMKV()
 
+    fun getMMkv() = mMMkv
 
     /**
      * 存入map集合

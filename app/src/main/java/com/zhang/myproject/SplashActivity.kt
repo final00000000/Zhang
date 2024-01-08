@@ -7,10 +7,11 @@ import android.view.KeyEvent
 import com.tencent.smtt.export.external.TbsCoreSettings
 import com.tencent.smtt.sdk.QbSdk
 import com.zhang.myproject.base.AppGlobals
-import com.zhang.myproject.base.activity.BaseActivity
-import com.zhang.myproject.common.helple.MMkvHelperUtils
+import com.zhang.myproject.base.activity.BaseVbActivity
+import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.common.utils.mApplication
 import com.zhang.myproject.databinding.ActivitySplashBinding
+import com.zhang.myproject.resource.constant.APPKeyConstant
 import timber.log.Timber
 import java.util.Timer
 import java.util.TimerTask
@@ -21,13 +22,14 @@ import java.util.TimerTask
  * Description :
  */
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
+class SplashActivity : BaseVbActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
     override fun isLayoutToolbar(): Boolean = false
 
     private var mPrivacyPopWindow: PrivacyPopWindow? = null
 
     override fun initView(savedInstanceState: Bundle?) {
+        MMkvHelperUtils.saveFirstStart(APPKeyConstant.FIRST_START)
         initX5WebView()
         if (MMkvHelperUtils.getConsentToPrivacy()) {
             startMain()

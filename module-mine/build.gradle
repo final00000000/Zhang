@@ -6,12 +6,13 @@ apply from: '../common.gradle'
 
 
 android {
-    namespace 'com.zhang.mine'
-
+    namespace 'com.zhang.myproject.mine'
     defaultConfig {
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        kapt {
+            arguments { arg("AROUTER_MODULE_NAME", project.getName()) }
+        }
     }
 
     buildTypes {

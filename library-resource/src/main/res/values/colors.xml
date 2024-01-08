@@ -328,4 +328,9 @@
     <color name="color_white_5988FF">#FFFFFF</color>
     <color name="color_74A8F7_111215">#74A8F7</color>
     <color name="color_77AAF7_111215">#77AAF7</color>
+    <!-- 状态色 -->
+    <color name="color_00CC4B_32D56E">#00CC4B</color>
+    <color name="color_0DE0EB_464646">#DDE0EB</color>
+    <!-- 主题色 -->
+    <color name="color_FF5F00_FA7A2E">#FF5F00</color>
 </resources>

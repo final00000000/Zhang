@@ -69,4 +69,10 @@
     <string name="common_permission_ignore_battery_optimize">忽略电池优化权限</string>
     <string name="common_permission_picture_in_picture">画中画权限</string>
     <string name="common_permission_vpn">\tVPN\t权限</string>
+    <string name="common_default_theme">默认主题</string>
+    <string name="app_theme_mode">外观</string>
+    <string name="theme_light_mode">浅色模式</string>
+    <string name="theme_dark_mode">深色模式</string>
+    <string name="theme_follow_system">跟随系统</string>
+    <string name="common_test_txt">测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zhang.myproject.common.constant
+package com.zhang.myproject.resource.constant
 
 /**
  * Date: 2023/9/14
@@ -24,5 +24,11 @@ interface APPKeyConstant {
          * 是否同意隐私政策
          */
         const val CONSENT_TO_PRIVACY = "consent_to_privacy"
+
+        /**
+         * 首次启动
+         */
+        const val FIRST_START = "first_start"
+
     }
 }

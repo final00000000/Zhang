@@ -6,7 +6,7 @@ apply from: '../common.gradle'
 
 
 android {
-    namespace 'com.zhang.amap'
+    namespace 'com.zhang.myproject.amap'
 
     defaultConfig {
 

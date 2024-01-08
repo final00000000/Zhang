@@ -1,4 +1,4 @@
-package com.zhang.amap
+package com.zhang.myproject.amap.view.fragment
 
 import android.graphics.Color
 import android.os.Bundle
@@ -18,9 +18,10 @@ import com.amap.api.maps.model.MarkerOptions
 import com.amap.api.maps.model.MyLocationStyle
 import com.drake.logcat.LogCat
 import com.makeramen.roundedimageview.RoundedImageView
-import com.zhang.amap.databinding.FragmentAMapBinding
+import com.zhang.myproject.amap.R
+import com.zhang.myproject.amap.databinding.FragmentAMapBinding
 import com.zhang.myproject.base.fragment.BaseFragment
-import com.zhang.myproject.common.helple.MMkvHelperUtils
+import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.common.utils.getDrawableRes
 import com.zhang.myproject.common.utils.requestLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils

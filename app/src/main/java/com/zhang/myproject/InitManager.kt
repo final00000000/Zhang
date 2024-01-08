@@ -3,7 +3,6 @@ package com.zhang.myproject
 import android.app.Application
 import com.amap.api.location.AMapLocationClient
 import com.drake.logcat.LogCat
-import com.tencent.mmkv.BuildConfig
 import com.tencent.mmkv.MMKV
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.utils.toast.Toasty

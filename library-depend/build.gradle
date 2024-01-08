@@ -22,13 +22,14 @@ android {
 
 dependencies {
 
+    api fileTree(include: ['*.jar','*.aar'], dir: 'libs')
     /*  这样会有依赖更新提醒  */
 
     api 'androidx.core:core-ktx:1.12.0'
     api 'androidx.appcompat:appcompat:1.6.1'
     api 'com.google.android.material:material:1.10.0'
-    api 'androidx.activity:activity-ktx:1.8.0'
-    api 'androidx.fragment:fragment-ktx:1.6.1'
+    api 'androidx.activity:activity-ktx:1.8.2'
+    api 'androidx.fragment:fragment-ktx:1.6.2'
     testApi 'junit:junit:4.13.2'
     androidTestApi 'androidx.test.ext:junit:1.1.5'
     androidTestApi 'androidx.test.espresso:espresso-core:3.5.1'
@@ -43,7 +44,7 @@ dependencies {
 
     // 高德3D地图-导航-搜索-定位
     //api 'com.AMap.api:3DMap:9.8.2'
-    api 'com.amap.api:navi-3dmap:9.6.0_3dmap9.6.0'
+    api 'com.amap.api:navi-3dmap:9.8.3_3dmap9.8.3'
     api 'com.amap.api:search:9.7.0'
     //api 'com.AMap.api:location:6.4.0'
 

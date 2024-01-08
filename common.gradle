@@ -1,6 +1,7 @@
 import com.zhang.buildSrc.*
 
 apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 // 通用配置
 android {
@@ -26,6 +27,10 @@ android {
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    // 启用自定义 BuildConfig 字段
+    buildFeatures {
+        buildConfig = true
     }
 
     kotlinOptions {

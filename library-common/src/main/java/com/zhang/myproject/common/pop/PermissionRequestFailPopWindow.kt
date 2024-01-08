@@ -28,10 +28,10 @@ class PermissionRequestFailPopWindow(context: Context) : BasePopupWindow(context
         popupGravity = Gravity.CENTER
         width = getScreenWidth(context) - (dipToPx(32f).toInt() * 2)
         setOutSideDismiss(true)
-        showAnimation = AnimationHelper.asAnimation()
-            .withTranslation(TranslationConfig().from(Direction.BOTTOM)).toShow()
-        dismissAnimation = AnimationHelper.asAnimation()
-            .withTranslation(TranslationConfig.TO_TOP).toDismiss()
+//        showAnimation = AnimationHelper.asAnimation()
+//            .withTranslation(TranslationConfig().from(Direction.BOTTOM)).toShow()
+//        dismissAnimation = AnimationHelper.asAnimation()
+//            .withTranslation(TranslationConfig.TO_TOP).toDismiss()
         mBinding?.apply {
             tvExit.singleClick {
                 dismiss()

@@ -23,11 +23,10 @@ import com.zhang.myproject.common.pop.PermissionRequestFailPopWindow
 import com.zhang.myproject.resource.R
 
 /**
- * author : Android 轮子哥
- * github : https://github.com/getActivity/XXPermissions
- * time   : 2021/01/04
- * desc   : 权限申请拦截器
- */
+ * Date: 2024/1/4
+ * Author : Zhang
+ * Description : 权限申请拦截器
+*/
 class PermissionInterceptor : IPermissionInterceptor {
     /** 权限申请标记  */
     private var mRequestFlag = false

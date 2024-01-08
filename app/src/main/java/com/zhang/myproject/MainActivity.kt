@@ -1,5 +1,6 @@
 package com.zhang.myproject
 
+import android.content.Context.SENSOR_SERVICE
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -8,15 +9,15 @@ import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
-import com.zhang.amap.AMapFragment
+import com.zhang.myproject.amap.view.fragment.AMapFragment
 import com.zhang.found.FoundFragment
 import com.zhang.home.fragment.HomeFragment
-import com.zhang.mine.MineFragment
+import com.zhang.myproject.mine.MineFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
-import com.zhang.myproject.base.activity.BaseNetWorkActivity
+import com.zhang.myproject.base.activity.BaseVBVMActivity
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.utils.toast.Toasty
-import com.zhang.myproject.common.helple.MMkvHelperUtils
+import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.databinding.ActivityMainBinding
 
 /**
@@ -24,9 +25,7 @@ import com.zhang.myproject.databinding.ActivityMainBinding
  * Author : Zhang
  * Description :
  */
-class MainActivity :
-    BaseNetWorkActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main),
-    SensorEventListener {
+class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main), SensorEventListener {
 
     override fun isLayoutToolbar(): Boolean = false
 
@@ -43,16 +42,13 @@ class MainActivity :
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
-//            ImmersionBar.with(this@MainActivity)
-//                .fitsSystemWindows(false)
-//                .statusBarDarkFont(true, 0.2f)
-//                .init()
             ViewPager2Delegate.install(mainViewPager, tabLayout)
 
             val viewPager2Adapter = ViewPager2Adapter(this@MainActivity, fragmentList)
             mainViewPager.isUserInputEnabled = false
             mainViewPager.adapter = viewPager2Adapter
             tabLayout.observeIndexChange { _, toIndex, _, _ ->
+                mainViewPager.setCurrentItem(toIndex, false)
                 when (toIndex) {
                     0 -> {
 
@@ -102,9 +98,7 @@ class MainActivity :
         super.onResume()
         startOrientationChangListener()
         sensorManager?.registerListener(
-            this,
-            sensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-            SensorManager.SENSOR_DELAY_GAME
+            this, sensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME
         )
     }
 

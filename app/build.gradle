@@ -78,6 +78,10 @@ android {
             outputFileName = newName
         }
     }
+    // 启用自定义 BuildConfig 字段
+    buildFeatures {
+        buildConfig = true
+    }
 }
 static def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
