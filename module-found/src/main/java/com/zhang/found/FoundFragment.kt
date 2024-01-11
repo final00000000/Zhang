@@ -2,9 +2,9 @@ package com.zhang.found
 
 import android.os.Bundle
 import com.zhang.found.databinding.FragmentFoundBinding
-import com.zhang.myproject.base.fragment.BaseFragment
+import com.zhang.myproject.base.fragment.BaseVBFragment
 
-class FoundFragment : BaseFragment<FragmentFoundBinding>(R.layout.fragment_found) {
+class FoundFragment : BaseVBFragment<FragmentFoundBinding>(R.layout.fragment_found) {
     companion object {
         @JvmStatic
         fun newInstance() =
@@ -13,9 +13,6 @@ class FoundFragment : BaseFragment<FragmentFoundBinding>(R.layout.fragment_found
 
     override fun initView(savedInstanceState: Bundle?) {
 
-    }
-
-    override fun initData() {
     }
 
     override fun setOnViewClick() {

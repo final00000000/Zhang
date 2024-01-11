@@ -1,14 +1,12 @@
 package com.zhang.myproject.base.callback
 
-import android.view.View
-
 /**
  * @Author : zhang
  * @Create Time : 2021/11/24
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-interface IsBase {
+interface ActivityBaseCallBack {
     /**
      * 是否需要使用带有TitleBar的父容器
      */
@@ -16,7 +14,6 @@ interface IsBase {
 
     /**
      * 开始显示加载框
-     * @return Boolean
      */
     fun startLoading()
 
@@ -33,6 +30,6 @@ interface IsBase {
     /**
      * 无网视图
      */
-    fun showNoNetWorkView(netWorkSuccess : Boolean?)
+    fun showNoNetWorkView(netWorkSuccess: Boolean?)
 
 }

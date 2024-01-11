@@ -20,14 +20,15 @@ import com.drake.logcat.LogCat
 import com.makeramen.roundedimageview.RoundedImageView
 import com.zhang.myproject.amap.R
 import com.zhang.myproject.amap.databinding.FragmentAMapBinding
-import com.zhang.myproject.base.fragment.BaseFragment
+import com.zhang.myproject.base.fragment.BaseVBFragment
 import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.common.utils.getDrawableRes
 import com.zhang.myproject.common.utils.requestLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils
 
-class AMapFragment : BaseFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
+class AMapFragment : BaseVBFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
     AMapLocationListener {
+
     companion object {
         @JvmStatic
         fun newInstance() = AMapFragment().apply { arguments = Bundle().apply {} }
@@ -51,12 +52,6 @@ class AMapFragment : BaseFragment<FragmentAMapBinding>(R.layout.fragment_a_map),
             }
         }
 
-    }
-
-    override fun initData() {
-        mViewBinding.apply {
-
-        }
     }
 
     override fun setOnViewClick() {

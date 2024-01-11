@@ -36,18 +36,12 @@ var mApplication: Application? = null
 
 /**
  * 获取颜色值
- * @receiver Activity
- * @param id Int
- * @return Int
  */
 fun getColorRes(@ColorRes id: Int): Int =
     AppGlobals.get()?.let { ContextCompat.getColor(it, id) } ?: 0
 
 /**
  * 获取资源图片
- * @receiver Activity
- * @param id Int
- * @return Drawable?
  */
 fun getDrawableRes(@DrawableRes id: Int): Drawable? =
     AppGlobals.get()?.let { ContextCompat.getDrawable(it, id) }
@@ -55,7 +49,7 @@ fun getDrawableRes(@DrawableRes id: Int): Drawable? =
 /**
  */
 fun getStringRes(@StringRes stringId: Int): String =
-    AppGlobals.get()?.let { it.getString(stringId) } ?: ""
+    AppGlobals.get()?.getString(stringId) ?: ""
 
 /**
  * 绑定viewBinding

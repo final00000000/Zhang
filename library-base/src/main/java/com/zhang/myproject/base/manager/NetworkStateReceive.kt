@@ -27,8 +27,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                         }
                         return
                     }
-                    NetworkManager.instance.mNetworkStateCallback.value =
-                        NetWorkState(isSuccess = false)
+                    NetworkManager.instance.mNetworkStateCallback.value = NetWorkState(isSuccess = false)
                 } else {
                     //收到有网络时判断之前的值是不是没有网络，如果没有网络才提示通知 ，防止重复通知
                     NetworkManager.instance.mNetworkStateCallback.value?.let {

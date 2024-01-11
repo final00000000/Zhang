@@ -87,6 +87,10 @@ dependencies {
 
     // 刷新框架  https://github.com/scwang90/SmartRefreshLayout
     api 'io.github.scwang90:refresh-layout-kernel:2.1.0'
+    // 经典刷新头
+    api 'io.github.scwang90:refresh-header-classics:2.1.0'
+    // 经典加载
+    api 'io.github.scwang90:refresh-footer-classics:2.1.0'
 
     // 富文本展示工具 https://github.com/liangjingkanji/spannable
     api 'com.github.liangjingkanji:spannable:1.2.7'

@@ -3,10 +3,12 @@ package com.zhang.home.fragment
 import android.os.Bundle
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
-import com.zhang.myproject.base.fragment.BaseFragment
+import com.zhang.myproject.base.fragment.BaseVBFragment
 import com.zhang.myproject.base.utils.singleClick
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+
+    override fun isLayoutToolbar(): Boolean = true
 
     companion object {
         @JvmStatic
@@ -15,14 +17,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
+            setToolbarTitle(com.zhang.myproject.resource.R.string.main_tab_home)
             tvHome.singleClick {
             }
-        }
-    }
-
-    override fun initData() {
-        mViewBinding.apply {
-
         }
     }
 

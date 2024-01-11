@@ -7,7 +7,7 @@ import android.view.KeyEvent
 import com.tencent.smtt.export.external.TbsCoreSettings
 import com.tencent.smtt.sdk.QbSdk
 import com.zhang.myproject.base.AppGlobals
-import com.zhang.myproject.base.activity.BaseVbActivity
+import com.zhang.myproject.base.activity.BaseVBActivity
 import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.common.utils.mApplication
 import com.zhang.myproject.databinding.ActivitySplashBinding
@@ -22,7 +22,7 @@ import java.util.TimerTask
  * Description :
  */
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : BaseVbActivity<ActivitySplashBinding>(R.layout.activity_splash) {
+class SplashActivity : BaseVBActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
     override fun isLayoutToolbar(): Boolean = false
 

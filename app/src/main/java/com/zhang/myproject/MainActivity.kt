@@ -1,6 +1,5 @@
 package com.zhang.myproject
 
-import android.content.Context.SENSOR_SERVICE
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -9,16 +8,16 @@ import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
-import com.zhang.myproject.amap.view.fragment.AMapFragment
 import com.zhang.found.FoundFragment
 import com.zhang.home.fragment.HomeFragment
-import com.zhang.myproject.mine.MineFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
+import com.zhang.myproject.amap.view.fragment.AMapFragment
 import com.zhang.myproject.base.activity.BaseVBVMActivity
+import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.utils.toast.Toasty
-import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.databinding.ActivityMainBinding
+import com.zhang.myproject.mine.MineFragment
 
 /**
  * Date: 2023/7/6

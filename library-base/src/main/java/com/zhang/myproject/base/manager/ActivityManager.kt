@@ -7,7 +7,6 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
-import com.zhang.myproject.base.activity.BaseActivity
 import java.lang.ref.WeakReference
 
 /**
@@ -18,7 +17,7 @@ class ActivityManager private constructor() {
     private val activityRefs = ArrayList<WeakReference<Activity>>()
     private val frontBackCallbacks = ArrayList<FrontBackCallback>()
     private var activityStartCount = 0
-    private var front = true;
+    private var front = true
     fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(InnerActivityLifecycleCallbacks())
     }
@@ -35,7 +34,7 @@ class ActivityManager private constructor() {
             //!front 之前是不是在后台
             if (!front && activityStartCount > 0) {
                 front = true
-                onFrontBackChanged(front);
+                onFrontBackChanged(front)
             }
         }
 
@@ -46,7 +45,7 @@ class ActivityManager private constructor() {
         }
 
         override fun onActivityStopped(activity: Activity) {
-            activityStartCount--;
+            activityStartCount--
             if (activityStartCount <= 0 && front) {
                 front = false
                 onFrontBackChanged(front)
@@ -56,7 +55,7 @@ class ActivityManager private constructor() {
         override fun onActivityDestroyed(activity: Activity) {
             for (activityRef in activityRefs) {
                 if (activityRef != null && activityRef.get() == activity) {
-                    activityRefs.remove(activityRef);
+                    activityRefs.remove(activityRef)
                     break
                 }
             }
@@ -80,7 +79,7 @@ class ActivityManager private constructor() {
             return null
         } else {
             val activityRef = activityRefs[activityRefs.size - 1]
-            val activity: Activity? = activityRef.get();
+            val activity: Activity? = activityRef.get()
             if (onlyAlive) {
                 if (activity == null || activity.isFinishing || activity.isDestroyed) {
                     activityRefs.remove(activityRef)
@@ -106,7 +105,7 @@ class ActivityManager private constructor() {
     }
 
     fun removeFrontBackCallback(callback: FrontBackCallback) {
-        frontBackCallbacks.remove(callback);
+        frontBackCallbacks.remove(callback)
     }
 
 
@@ -259,24 +258,6 @@ class ActivityManager private constructor() {
             context.baseContext
         )
         return null
-    }
-    /**
-     * 当系统主题样式发生改变后，通知Activity进行刷新
-     */
-    fun refreshNightMode(cls: Class<*>) {
-        try {
-            activityRefs.forEach {
-                it.get()?.let { activity ->
-                    if (activity.javaClass == cls) {
-                        return@forEach
-                    }
-                    activity as BaseActivity
-                    activity.requestRecreate()
-                }
-            }
-        } catch (e: Throwable) {
-            e.printStackTrace()
-        }
     }
 
     /**

@@ -1,21 +1,23 @@
 package com.zhang.myproject.base.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
-import com.gyf.immersionbar.ktx.statusBarHeight
 import com.zhang.myproject.base.R
-import com.zhang.myproject.base.callback.IsBase
+import com.zhang.myproject.base.callback.ActivityBaseCallBack
+import com.zhang.myproject.base.data.NetWorkState
+import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
-import timber.log.Timber
+import com.zhang.myproject.base.utils.toast.Toasty
 
 /**
  * @Author : zhang
@@ -23,7 +25,7 @@ import timber.log.Timber
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-abstract class BaseVbActivity<VB : ViewBinding>(@LayoutRes layoutID: Int) : BaseActivity(), IsBase {
+abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes layoutID: Int) : BaseActivity(), ActivityBaseCallBack {
 
     protected lateinit var mViewBinding: VB
 
@@ -81,24 +83,56 @@ abstract class BaseVbActivity<VB : ViewBinding>(@LayoutRes layoutID: Int) : Base
     }
 
     override fun showNoNetWorkView(netWorkSuccess: Boolean?) {
-        netWorkSuccess?.let {
-            if (!it) {
 
-            }
+    }
+
+    /**
+     * 设置toolbar标题
+     */
+    protected fun setToolbarTitle(@StringRes titleTxt: Int) {
+        if (!isLayoutToolbar()) {
+            return
+        }
+        findViewById<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
+    }
+
+    /**
+     * 设置toolbar右侧文案
+     */
+    protected fun setToolbarRightText(@StringRes rightTxt: Int) {
+        if (!isLayoutToolbar()) {
+            return
+        }
+        findViewById<TextView>(R.id.tvRightTitle).apply {
+            isVisible = getStringRes(rightTxt).isNotEmpty()
+            text = getStringRes(rightTxt)
+        }
+    }
+
+    /**
+     * 设置toolbar右侧图片
+     */
+    protected fun setToolbarRightIcon(rightIcon: Int) {
+        if (!isLayoutToolbar()) {
+            return
+        }
+        findViewById<ImageView>(R.id.ivRightIcon).apply {
+            isVisible = true
+            setImageResource(rightIcon)
+        }
+    }
+
+    /**
+     * 网络变化监听 子类重写
+     */
+    protected fun onNetworkStateChanged(netState: NetWorkState) {
+        if (!netState.isSuccess) {
+            Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }
     }
 
     protected fun killMyself() {
         finish()
-    }
-
-    protected fun setToolBarTitle(title: String) {
-        if (isLayoutToolbar()) {
-            /**
-             * toolbar标题
-             */
-            findViewById<AppCompatTextView>(R.id.tvPageTitle).text = title
-        }
     }
 
 }

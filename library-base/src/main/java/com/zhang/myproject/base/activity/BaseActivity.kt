@@ -17,7 +17,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isRecreate = false
         ImmersionBar.with(this).fitsSystemWindows(false).statusBarDarkFont(isStatusBarDarkFont()).init()
     }
 
@@ -28,15 +27,5 @@ abstract class BaseActivity : AppCompatActivity() {
         return if (MMkvHelperUtils.getNightSystemAutoMode()) {
             dayNightUiMode == Configuration.UI_MODE_NIGHT_NO
         } else !MMkvHelperUtils.getCurrentNightMode()
-    }
-
-    private var isRecreate = false
-
-    /**
-     * 通知刷新主题样式
-     */
-    open fun requestRecreate() {
-        isRecreate = true
-        recreate()
     }
 }

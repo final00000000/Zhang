@@ -6,10 +6,16 @@ import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.IntentFilter
 import android.database.Cursor
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.zhang.myproject.base.AppGlobals
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.manager.NetworkStateReceive
 import timber.log.Timber
@@ -99,3 +105,19 @@ class LifeCycleCallBack : Application.ActivityLifecycleCallbacks {
 
 
 }
+
+
+/**
+ * 获取颜色值
+ */
+fun getColorRes(@ColorRes id: Int): Int = AppGlobals.get()?.let { ContextCompat.getColor(it, id) } ?: 0
+
+/**
+ * 获取资源图片
+ */
+fun getDrawableRes(@DrawableRes id: Int): Drawable? = AppGlobals.get()?.let { ContextCompat.getDrawable(it, id) }
+
+/**
+ * 获取文字
+ */
+fun getStringRes(@StringRes stringId: Int): String = AppGlobals.get()?.getString(stringId) ?: ""

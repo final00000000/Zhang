@@ -91,12 +91,6 @@ dependencies {
     /** 工具类 library */
     // 业务相关公共类
     implementation project(':library-common')
-    // base基类
-    implementation project(':library-base')
-    // 资源
-    implementation project(':library-resource')
-    // 依赖
-    implementation project(':library-depend')
 
     /** 业务 module */
     implementation project(':module-home')
