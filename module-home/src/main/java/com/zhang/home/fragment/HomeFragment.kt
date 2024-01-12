@@ -4,11 +4,12 @@ import android.os.Bundle
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
 import com.zhang.myproject.base.fragment.BaseVBFragment
+import com.zhang.myproject.base.fragment.BaseVBVMFragment
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.common.utils.getStringRes
 
-class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
     companion object {
         @JvmStatic
@@ -20,6 +21,7 @@ class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home)
             vToolbar.vvImmersionView.initToolbarBarHeight()
             vToolbar.tvPageTitle.text = getStringRes(com.zhang.myproject.resource.R.string.main_tab_home)
             tvHome.singleClick {
+                mViewModel.getData()
             }
         }
     }
@@ -28,6 +30,9 @@ class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home)
         mViewBinding.apply {
 
         }
+    }
+
+    override fun createObserver() {
     }
 
 }

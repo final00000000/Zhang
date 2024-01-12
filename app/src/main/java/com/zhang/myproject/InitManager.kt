@@ -3,14 +3,22 @@ package com.zhang.myproject
 import android.app.Application
 import com.amap.api.location.AMapLocationClient
 import com.drake.logcat.LogCat
+import com.drake.net.NetConfig
+import com.drake.net.okhttp.setConverter
+import com.drake.net.okhttp.setRequestInterceptor
 import com.kongzue.dialogx.DialogX
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
+import com.zhang.myproject.base.RollApiConstant
 import com.zhang.myproject.base.manager.ActivityManager
+import com.zhang.myproject.base.net.GlobalHeaderInterceptor
+import com.zhang.myproject.base.net.GsonConverter
+import com.zhang.myproject.base.net.NetInterceptor
 import com.zhang.myproject.base.utils.toast.Toasty
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -103,5 +111,23 @@ fun Application?.initDialogX() {
     this?.let {
         //初始化
         DialogX.init(it)
+    }
+}
+
+fun Application?.initNet() {
+    this?.let {
+        NetConfig.initialize(RollApiConstant.ROLL_BASE_URL, it) {
+            // 超时设置
+            connectTimeout(30, TimeUnit.SECONDS)
+            readTimeout(30, TimeUnit.SECONDS)
+            writeTimeout(30, TimeUnit.SECONDS)
+
+            addInterceptor(NetInterceptor())
+            // 添加请求拦截器, 可配置全局/动态参数
+            setRequestInterceptor(GlobalHeaderInterceptor())
+
+            // 数据转换器
+//            setConverter(GsonConverter())
+        }
     }
 }

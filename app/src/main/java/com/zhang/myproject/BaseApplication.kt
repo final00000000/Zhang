@@ -19,6 +19,7 @@ abstract class BaseApplication : Application() {
         initActivityManager()
         initDialogX()
         initRefreshStyle()
+        initNet()
         mApplication = this
     }
 
