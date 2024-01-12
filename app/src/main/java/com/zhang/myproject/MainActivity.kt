@@ -97,7 +97,7 @@ class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layo
         super.onResume()
         startOrientationChangListener()
         sensorManager?.registerListener(
-            this, sensorManager?.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME
+            this, sensorManager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_GAME
         )
     }
 
@@ -108,7 +108,7 @@ class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layo
 
     override fun onSensorChanged(event: SensorEvent?) {
         event?.run {
-            if (sensor.type == Sensor.TYPE_ORIENTATION) {
+            if (sensor.type == Sensor.TYPE_ROTATION_VECTOR) {
                 if (MMkvHelperUtils.getGyroAngle() == values[0]) {
                     return
                 } else {

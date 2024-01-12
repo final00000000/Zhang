@@ -8,8 +8,6 @@ import com.zhang.myproject.base.utils.singleClick
 
 class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
-    override fun isLayoutToolbar(): Boolean = true
-
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment().apply { arguments = Bundle().apply {} }
@@ -17,7 +15,6 @@ class HomeFragment : BaseVBFragment<FragmentHomeBinding>(R.layout.fragment_home)
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
-            setToolbarTitle(com.zhang.myproject.resource.R.string.main_tab_home)
             tvHome.singleClick {
             }
         }

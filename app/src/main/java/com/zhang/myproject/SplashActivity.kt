@@ -86,9 +86,9 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(R.layout.activity_s
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         return if (keyCode != KeyEvent.KEYCODE_BACK) {
-            return super.onKeyDown(keyCode, event)
+            super.onKeyDown(keyCode, event)
         } else {
-            return false
+            false
         }
     }
 }

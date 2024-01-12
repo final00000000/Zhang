@@ -3,9 +3,13 @@ package com.zhang.myproject.common.utils
 import android.app.Application
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ImageSpan
 import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.View
-import android.view.WindowManager
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
@@ -24,6 +28,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
+
 
 /**
  * Date: 2023/10/10
@@ -58,19 +63,40 @@ fun getStringRes(@StringRes stringId: Int): String =
 fun Context.viewBindViewBinding(@LayoutRes layout: Int): ViewDataBinding? =
     DataBindingUtil.bind(View.inflate(this, layout, null))
 
+/**
+ *  dp转px
+ */
+fun dpToPx(dpVal: Float): Int {
+    return (AppGlobals.get()?.applicationContext ?: mApplication)?.let { dpConversionPx(it, dpVal) } ?: 0
+}
+
+/**
+ * dp转px
+ */
+private fun dpConversionPx(context: Context, dpVal: Float): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, context.resources.displayMetrics).toInt()
+}
 
 /**
  * 获得屏幕宽度
- *
- * @param context
- * @return
  */
-fun getScreenWidth(context: Context): Int {
-    val wm = context
-        .getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    val outMetrics = DisplayMetrics()
-    wm.defaultDisplay.getMetrics(outMetrics)
-    return outMetrics.widthPixels
+fun Context?.getScreenWidth(): Int {
+    this?.let {
+        val dm: DisplayMetrics = it.resources.displayMetrics
+        return dm.widthPixels
+    }
+    return 0
+}
+
+/**
+ * 获得屏幕高度
+ */
+fun Context?.getScreenHeight(): Int {
+    this?.let {
+        val dm: DisplayMetrics = it.resources.displayMetrics
+        return dm.heightPixels
+    }
+    return 0
 }
 
 /**
@@ -109,4 +135,26 @@ fun countDownCoroutines(
         .onEach { onTick?.invoke(it) }
         .flowOn(Dispatchers.Main)
         .launchIn(scope)
+}
+
+/**
+ * TextView 添加图片
+ */
+fun TextView?.txtSetIcon(
+    txt: String, drawable: Drawable?,
+    startLocation: Int = 0, endLocation: Int = 1,
+    width: Int = dpToPx(16f), height: Int = dpToPx(16f)
+) {
+    this?.let {
+        // 创建 SpannableString
+        val spannableString = SpannableString(txt)
+        // 将图片添加到 SpannableString
+        drawable?.let { icon ->
+            icon.setBounds(0, 0, width, height)
+            val imageSpan = ImageSpan(icon, ImageSpan.ALIGN_BASELINE)
+            spannableString.setSpan(imageSpan, startLocation, endLocation, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+        } ?: throw NullPointerException("drawable is null")
+        // 设置 SpannableString 到 TextView
+        it.text = spannableString
+    } ?: throw NullPointerException("TextView is null")
 }

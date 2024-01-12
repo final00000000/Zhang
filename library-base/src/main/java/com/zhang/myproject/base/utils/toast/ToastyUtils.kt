@@ -2,6 +2,7 @@ package com.zhang.myproject.base.utils.toast
 
 import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.NinePatchDrawable
 import android.view.View
@@ -12,9 +13,11 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import com.zhang.myproject.base.R
 
+
 internal object ToastyUtils {
     fun tintIcon(drawable: Drawable, @ColorInt tintColor: Int): Drawable {
-        drawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN)
+        val colorFilter = PorterDuffColorFilter(tintColor, PorterDuff.Mode.SRC_IN)
+        drawable.colorFilter = colorFilter
         return drawable
     }
 

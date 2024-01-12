@@ -4,23 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
-import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.FragmentBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
 import com.zhang.myproject.base.manager.NetworkManager
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
-import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.toast.Toasty
 import java.lang.reflect.ParameterizedType
 
@@ -37,33 +29,10 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
 
     protected lateinit var mViewBinding: VB
 
-    /** 是否显示toolbar*/
-    override fun isLayoutToolbar(): Boolean = false
-
-    /** toolbar View*/
-    private var mToolbarView: View? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return if (isLayoutToolbar()) {
-            if (mToolbarView == null) {
-                mToolbarView = layoutInflater.inflate(R.layout.activity_base, container, false)
-            }
-            mToolbarView?.apply {
-                /**
-                 * 添加内容区
-                 */
-                findViewById<FrameLayout>(R.id.baseContent).addView(initViewBinding())
-                /**
-                 * toolbar返回键
-                 */
-                findViewById<AppCompatImageView>(R.id.ivPageBack).isVisible = false
-                findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
-            }
-        } else {
-            initViewBinding()
-        }
+        return initViewBinding()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -112,48 +81,6 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     protected abstract fun setOnViewClick()
 
     protected abstract fun createObserver()
-
-    /**
-     * 设置toolbar标题
-     */
-    protected fun setToolbarTitle(@StringRes titleTxt: Int) {
-        if (!isLayoutToolbar()) {
-            return
-        }
-        mToolbarView?.let {
-            it.findViewById<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
-        }
-    }
-
-    /**
-     * 设置toolbar右侧文案
-     */
-    protected fun setToolbarRightText(@StringRes rightTxt: Int) {
-        if (!isLayoutToolbar()) {
-            return
-        }
-        mToolbarView?.let {
-            it.findViewById<TextView>(R.id.tvRightTitle).apply {
-                isVisible = getStringRes(rightTxt).isNotEmpty()
-                text = getStringRes(rightTxt)
-            }
-        }
-    }
-
-    /**
-     * 设置toolbar右侧图片
-     */
-    protected fun setToolbarRightIcon(rightIcon: Int) {
-        if (!isLayoutToolbar()) {
-            return
-        }
-        mToolbarView?.let {
-            it.findViewById<ImageView>(R.id.ivRightIcon).apply {
-                isVisible = true
-                setImageResource(rightIcon)
-            }
-        }
-    }
 
     /**
      * 网络变化监听 子类重写

@@ -38,7 +38,7 @@ class PrivacyPopWindow(context: Context, private var success: (Boolean?) -> Unit
             context.viewBindViewBinding(R.layout.pop_window_privacy) as PopWindowPrivacyBinding
         contentView = mBinding!!.root
         popupGravity = Gravity.CENTER
-        width = (getScreenWidth(context) - dipToPx(32f) * 2).toInt()
+        width = (context.getScreenWidth() - dipToPx(32f) * 2).toInt()
         setOutSideDismiss(false)
         setBackPressEnable(false)
         showAnimation = AnimationHelper.asAnimation()

@@ -7,10 +7,6 @@ package com.zhang.myproject.base.callback
  * @Project Name : MyDemo
  */
 interface FragmentBaseCallBack {
-    /**
-     * 是否需要使用带有TitleBar的父容器
-     */
-    fun isLayoutToolbar(): Boolean
 
     /**
      * 开始显示加载框

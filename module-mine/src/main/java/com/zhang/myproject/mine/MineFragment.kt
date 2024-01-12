@@ -12,7 +12,6 @@ class MineFragment : BaseVBFragment<FragmentMineBinding>(R.layout.fragment_mine)
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        setToolbarTitle(com.zhang.myproject.resource.R.string.main_tab_mine)
     }
 
     override fun setOnViewClick() {

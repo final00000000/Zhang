@@ -26,7 +26,7 @@ class PermissionRequestFailPopWindow(context: Context) : BasePopupWindow(context
             context.viewBindViewBinding(R.layout.permission_request_fail_pop_window) as PermissionRequestFailPopWindowBinding
         contentView = mBinding?.root
         popupGravity = Gravity.CENTER
-        width = getScreenWidth(context) - (dipToPx(32f).toInt() * 2)
+        width = context.getScreenWidth() - (dipToPx(32f).toInt() * 2)
         setOutSideDismiss(true)
 //        showAnimation = AnimationHelper.asAnimation()
 //            .withTranslation(TranslationConfig().from(Direction.BOTTOM)).toShow()
