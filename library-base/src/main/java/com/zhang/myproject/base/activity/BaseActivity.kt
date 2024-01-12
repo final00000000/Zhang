@@ -17,7 +17,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ImmersionBar.with(this).fitsSystemWindows(false).statusBarDarkFont(isStatusBarDarkFont()).init()
+        ImmersionBar.with(this).fitsSystemWindows(false).statusBarDarkFont(true).init()
     }
 
 

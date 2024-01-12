@@ -1,5 +1,7 @@
 package com.zhang.myproject.base.utils
 
+import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import com.gyf.immersionbar.ktx.statusBarHeight
@@ -17,4 +19,18 @@ fun View?.initToolbarBarHeight() {
         layoutParams.height = AppGlobals.get()?.statusBarHeight ?: 0
         it.layoutParams = layoutParams
     }
+}
+
+/**
+ *  dp转px
+ */
+fun dpToPx(dpVal: Float): Int {
+    return AppGlobals.get()?.applicationContext?.let { dpConversionPx(it, dpVal) } ?: 0
+}
+
+/**
+ * dp转px
+ */
+private fun dpConversionPx(context: Context, dpVal: Float): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, context.resources.displayMetrics).toInt()
 }
