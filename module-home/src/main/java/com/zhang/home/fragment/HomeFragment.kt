@@ -3,7 +3,6 @@ package com.zhang.home.fragment
 import android.os.Bundle
 import com.zhang.home.R
 import com.zhang.home.databinding.FragmentHomeBinding
-import com.zhang.myproject.base.fragment.BaseVBFragment
 import com.zhang.myproject.base.fragment.BaseVBVMFragment
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
@@ -19,7 +18,7 @@ class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override fun initView(savedInstanceState: Bundle?) {
         mViewBinding.apply {
             vToolbar.vvImmersionView.initToolbarBarHeight()
-            vToolbar.tvPageTitle.text = getStringRes(com.zhang.myproject.resource.R.string.main_tab_home)
+            vToolbar.tvPageTitle.text = getStringRes(R.string.main_tab_home)
             tvHome.singleClick {
                 mViewModel.getData()
             }
