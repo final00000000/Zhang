@@ -22,6 +22,7 @@ import com.zhang.myproject.base.utils.getVmClass
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.base.utils.toast.Toasty
+import timber.log.Timber
 
 
 /**
@@ -47,6 +48,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         )[getVmClass(this)]
         if (isLayoutToolbar()) {
             setContentView(R.layout.activity_base)
+            findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
             /**
              * 添加内容区
              */
@@ -54,8 +56,11 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
             /**
              * toolbar返回键
              */
-            findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { killMyself() }
-            findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
+            try {
+                findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { killMyself() }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         } else {
             setContentView(initViewBinding())
         }
@@ -155,7 +160,9 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
             Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }
     }
+
     private fun killMyself() {
+        Timber.d("测试_159：finish")
         finish()
     }
 

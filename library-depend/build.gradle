@@ -46,6 +46,8 @@ dependencies {
     // Lifecycle
     api "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
     api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    api 'androidx.core:core-splashscreen:1.0.0'
+
 
     /*======================================================*/
 
@@ -78,7 +80,12 @@ dependencies {
 
     // 网络请求  https://github.com/liangjingkanji/Net
     api 'com.github.liangjingkanji:Net:3.6.4'
-    api 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2'
+
+    // rvAdapter  https://github.com/liangjingkanji/BRV
+    api 'com.github.liangjingkanji:BRV:1.5.8'
+
+    // kotlin序列化
+    api 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3'
 
     // 缺省页  https://github.com/liangjingkanji/StateLayout
     api 'com.github.liangjingkanji:StateLayout:1.4.2'
@@ -132,4 +139,5 @@ dependencies {
 
     //X5WebView  https://x5.tencent.com/docs/access.html
     api 'com.tencent.tbs:tbssdk:44286'
+    debugApi 'com.squareup.leakcanary:leakcanary-android:3.0-alpha-1'
 }

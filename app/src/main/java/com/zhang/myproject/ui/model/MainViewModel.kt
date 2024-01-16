@@ -1,4 +1,4 @@
-package com.zhang.myproject
+package com.zhang.myproject.ui.model
 
 import androidx.lifecycle.ViewModel
 

@@ -25,7 +25,7 @@ import com.zhang.myproject.base.utils.toast.Toasty
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes layoutID: Int) : BaseActivity(), ActivityBaseCallBack {
+abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : BaseActivity(), ActivityBaseCallBack {
 
     protected lateinit var mViewBinding: VB
 

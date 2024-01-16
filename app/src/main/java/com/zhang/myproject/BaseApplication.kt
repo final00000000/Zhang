@@ -2,6 +2,7 @@ package com.zhang.myproject
 
 import android.app.Application
 import com.zhang.myproject.common.utils.mApplication
+import leakcanary.LeakCanary
 
 /**
  * Date: 2023/10/10
@@ -20,6 +21,7 @@ abstract class BaseApplication : Application() {
         initDialogX()
         initRefreshStyle()
         initNet()
+        initStatus()
         mApplication = this
     }
 

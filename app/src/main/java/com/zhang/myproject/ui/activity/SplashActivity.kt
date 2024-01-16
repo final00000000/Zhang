@@ -1,36 +1,39 @@
-package com.zhang.myproject
+package com.zhang.myproject.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.tencent.smtt.export.external.TbsCoreSettings
 import com.tencent.smtt.sdk.QbSdk
+import com.zhang.myproject.MainActivity
 import com.zhang.myproject.base.AppGlobals
-import com.zhang.myproject.base.activity.BaseVBActivity
+import com.zhang.myproject.base.activity.BaseActivity
 import com.zhang.myproject.base.helper.MMkvHelperUtils
-import com.zhang.myproject.common.utils.mApplication
-import com.zhang.myproject.databinding.ActivitySplashBinding
+import com.zhang.myproject.common.utils.countDownCoroutines
+import com.zhang.myproject.init
 import com.zhang.myproject.resource.constant.APPKeyConstant
+import com.zhang.myproject.ui.pop.PrivacyPopWindow
 import timber.log.Timber
-import java.util.Timer
-import java.util.TimerTask
 
 /**
  * Date: 2023/10/10
  * Author : Zhang
  * Description :
  */
-@SuppressLint("CustomSplashScreen")
-class SplashActivity : BaseVBActivity<ActivitySplashBinding>(R.layout.activity_splash) {
-
-    override fun isLayoutToolbar(): Boolean = false
+class SplashActivity : BaseActivity() {
 
     private var mPrivacyPopWindow: PrivacyPopWindow? = null
 
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initView()
+    }
+
+    private fun initView() {
+        installSplashScreen().setKeepOnScreenCondition { true }
         MMkvHelperUtils.saveFirstStart(APPKeyConstant.FIRST_START)
-        initX5WebView()
+//        initX5WebView()
         if (MMkvHelperUtils.getConsentToPrivacy()) {
             startMain()
         } else {
@@ -38,20 +41,12 @@ class SplashActivity : BaseVBActivity<ActivitySplashBinding>(R.layout.activity_s
         }
     }
 
-    override fun setOnViewClick() {
-    }
-
     private fun startMain() {
-        val task: TimerTask = object : TimerTask() {
-            override fun run() {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                MMkvHelperUtils.setConsentToPrivacy(true)
-                (AppGlobals.get() ?: mApplication)?.init()
-//                finish()
-            }
-        }
-        val timer = Timer()
-        timer.schedule(task, 1000)
+        countDownCoroutines(1, onFinish = {
+            MMkvHelperUtils.setConsentToPrivacy(true)
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            AppGlobals.get()?.init()
+        })
     }
 
 

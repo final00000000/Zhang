@@ -75,5 +75,5 @@
     <string name="theme_light_mode">浅色模式</string>
     <string name="theme_dark_mode">深色模式</string>
     <string name="theme_follow_system">跟随系统</string>
-    <string name="common_test_txt">测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n测试文字\n\n\n</string>
+    <string name="today_in_history">历史上的今天</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zhang.myproject
+package com.zhang.myproject.ui.pop
 
 import android.content.Context
 import android.graphics.Typeface
@@ -9,6 +9,7 @@ import android.view.Gravity
 import android.view.animation.Animation
 import com.drake.spannable.movement.ClickableMovementMethod
 import com.drake.spannable.replaceSpan
+import com.zhang.myproject.R
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.base.utils.toast.Toasty
 import com.zhang.myproject.common.utils.SimpleSpStringBuilder

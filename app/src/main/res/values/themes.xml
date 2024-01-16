@@ -13,19 +13,27 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 启动画面的背景，默认使用 windowBackground -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- 指定 icon，支持静态 drawable 或动画 vector drawable -->
+        <item name="windowSplashScreenAnimatedIcon">@color/infoColor</item>
+
+        <item name="postSplashScreenTheme">@style/Theme.MyProject</item>
+    </style>
 
     <!-- 欢迎页专用的主题   -->
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/infoColor</item>
-        //隐藏标题栏
-        <item name="windowNoTitle">true</item>
-        //窗口全屏
-        <item name="android:windowFullscreen">true</item>
-        //透明状态栏
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="windowActionBar">false</item>
-        //闪屏页图片
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
-    </style>
+    <!--    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">-->
+    <!--        <item name="android:windowBackground">@color/infoColor</item>-->
+    <!--        //隐藏标题栏-->
+    <!--        <item name="windowNoTitle">true</item>-->
+    <!--        //窗口全屏-->
+    <!--        <item name="android:windowFullscreen">true</item>-->
+    <!--        //透明状态栏-->
+    <!--        <item name="android:windowTranslucentStatus">true</item>-->
+    <!--        <item name="windowActionBar">false</item>-->
+    <!--        //闪屏页图片-->
+    <!--        <item name="android:windowContentOverlay">@null</item>-->
+    <!--        <item name="android:windowDrawsSystemBarBackgrounds">false</item>-->
+    <!--    </style>-->
 </resources>

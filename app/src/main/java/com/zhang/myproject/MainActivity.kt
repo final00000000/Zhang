@@ -9,22 +9,24 @@ import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.zhang.found.FoundFragment
-import com.zhang.home.fragment.HomeFragment
+import com.zhang.home.fragment.ui.fragment.HomeFragment
 import com.zhang.myproject.adapter.ViewPager2Adapter
 import com.zhang.myproject.amap.view.fragment.AMapFragment
+import com.zhang.myproject.base.activity.BaseVBActivity
 import com.zhang.myproject.base.activity.BaseVBVMActivity
 import com.zhang.myproject.base.helper.MMkvHelperUtils
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.utils.toast.Toasty
 import com.zhang.myproject.databinding.ActivityMainBinding
 import com.zhang.myproject.mine.MineFragment
+import com.zhang.myproject.ui.model.MainViewModel
 
 /**
  * Date: 2023/7/6
  * Author : Zhang
  * Description :
  */
-class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main), SensorEventListener {
+class MainActivity : BaseVBActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun isLayoutToolbar(): Boolean = false
 
@@ -72,8 +74,8 @@ class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layo
     override fun setOnViewClick() {
     }
 
-    override fun createObserver() {
-    }
+//    override fun createObserver() {
+//    }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         return if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -95,38 +97,38 @@ class MainActivity : BaseVBVMActivity<ActivityMainBinding, MainViewModel>(R.layo
 
     override fun onResume() {
         super.onResume()
-        startOrientationChangListener()
-        sensorManager?.registerListener(
-            this, sensorManager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_GAME
-        )
+//        startOrientationChangListener()
+//        sensorManager?.registerListener(
+//            this, sensorManager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR), SensorManager.SENSOR_DELAY_GAME
+//        )
     }
 
 
-    private fun startOrientationChangListener() {
-        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager  //获取传感器服务
-    }
+//    private fun startOrientationChangListener() {
+//        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager  //获取传感器服务
+//    }
 
-    override fun onSensorChanged(event: SensorEvent?) {
-        event?.run {
-            if (sensor.type == Sensor.TYPE_ROTATION_VECTOR) {
-                if (MMkvHelperUtils.getGyroAngle() == values[0]) {
-                    return
-                } else {
-                    MMkvHelperUtils.setGyroAngle(values[0])
-                }
-            }
-        }
-    }
-
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+//    override fun onSensorChanged(event: SensorEvent?) {
+//        event?.run {
+//            if (sensor.type == Sensor.TYPE_ROTATION_VECTOR) {
+//                if (MMkvHelperUtils.getGyroAngle() == values[0]) {
+//                    return
+//                } else {
+//                    MMkvHelperUtils.setGyroAngle(values[0])
+//                }
+//            }
+//        }
+//    }
+//
+//    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     override fun onPause() {
+//        sensorManager?.unregisterListener(this)
         super.onPause()
-        sensorManager?.unregisterListener(this)
     }
 
     override fun onDestroy() {
-        sensorManager?.unregisterListener(this)
+//        sensorManager?.unregisterListener(this)
         super.onDestroy()
     }
 }
