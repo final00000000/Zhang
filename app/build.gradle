@@ -24,6 +24,8 @@ android {
             //选择要添加的对应 cpu 类型的 .so 库。
             abiFilters 'arm64-v8a','armeabi-v7a'
         }
+        renderscriptTargetApi 24
+        renderscriptSupportModeEnabled true
     }
 
     signingConfigs {

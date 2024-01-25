@@ -19,6 +19,14 @@
             android:layout_height="0dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_ip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/color_242942_White"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_today_in_history"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -26,6 +34,7 @@
             android:background="@drawable/bg_f5f6fa_0f1012_radius_14"
             android:gravity="center"
             android:text="@string/today_in_history"
+            android:textColor="@color/color_242942_White"
             android:textSize="14sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

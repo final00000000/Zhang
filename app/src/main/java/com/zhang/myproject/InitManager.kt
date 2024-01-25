@@ -11,6 +11,7 @@ import com.drake.net.okhttp.setDebug
 import com.drake.net.okhttp.setRequestInterceptor
 import com.drake.statelayout.StateConfig
 import com.kongzue.dialogx.DialogX
+import com.kongzue.dialogx.style.IOSStyle
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -116,6 +117,10 @@ fun Application?.initDialogX() {
     this?.let {
         //初始化
         DialogX.init(it)
+        //开启调试模式，在部分情况下会使用 Log 输出日志信息
+        DialogX.DEBUGMODE = BuildConfig.DEBUG
+        //设置为IOS主题
+        DialogX.globalStyle = IOSStyle()
     }
 }
 

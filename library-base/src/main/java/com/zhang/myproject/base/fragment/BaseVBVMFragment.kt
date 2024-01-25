@@ -5,15 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.kongzue.dialogx.dialogs.WaitDialog
 import com.zhang.myproject.base.callback.FragmentBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
 import com.zhang.myproject.base.manager.NetworkManager
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.toast.Toasty
+import timber.log.Timber
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -29,6 +34,8 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
 
     protected lateinit var mViewBinding: VB
 
+    private var mLoading: WaitDialog? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -37,11 +44,18 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initLoading()
         initViewModel()
         NetworkManager.instance.mNetworkStateCallback.observeSticky(this) {
             onNetworkStateChanged(it)
         }
         init(savedInstanceState)
+    }
+
+    private fun initLoading() {
+        mLoading = WaitDialog.build().setOnBackPressedListener {
+            false
+        }
     }
 
     private fun init(savedInstanceState: Bundle?) {
@@ -51,6 +65,21 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         setOnViewClick()
         // 数据观察
         createObserver()
+        showLoading()
+    }
+
+    private fun showLoading() {
+        // 开始loading
+        startLoading()
+        // 销毁loading
+        lifecycle.addObserver(object : LifecycleEventObserver {
+            override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+                Timber.d("测试_76：${event}")
+                if (event == Lifecycle.Event.ON_DESTROY) {
+                    finishLoading()
+                }
+            }
+        })
     }
 
     private fun initViewBinding(): View {
@@ -92,11 +121,17 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     }
 
     override fun startLoading() {
-
+        if (mLoading != null && mLoading?.isShow == false) {
+            mLoading?.show()
+        } else {
+            mLoading?.doDismiss()
+        }
     }
 
     override fun finishLoading() {
-
+        if (mLoading != null && mLoading?.isShow == true) {
+            mLoading?.doDismiss()
+        }
     }
 
     override fun showEmptyView() {
