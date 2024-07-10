@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.zhang.myproject.base.utils
 
 import android.content.Context
@@ -72,7 +74,7 @@ object NetworkUtils {
                     while (enumIpAddr.hasMoreElements()) {
                         val inetAddress = enumIpAddr.nextElement()
                         if (!inetAddress.isLoopbackAddress) {
-                            ret = inetAddress.hostAddress.toString()
+                            ret = inetAddress.hostAddress?.toString() ?: ""
                         }
                     }
                 }

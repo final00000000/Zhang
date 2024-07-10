@@ -1,0 +1,16 @@
+[
+  {
+    "path": "TodayInHistoryDetails",
+    "className": "com.zhang.home.fragment.ui.activity.TodayInHistoryDetailActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "TodayInHistory",
+    "className": "com.zhang.home.fragment.ui.activity.TodayInHistoryActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  }
+]

@@ -1,4 +1,4 @@
-package com.zhang.myproject.base
+package com.zhang.myproject.base.api
 
 /**
  * Date: 2024/1/12
@@ -10,7 +10,8 @@ object RollApiConstant {
     const val ROLL_APP_ID = "xjrrolsrof2dngr0"
     const val ROLL_APP_SECRET = "SXAzTTdWdHFsRTUybHpSS3IwRWRpdz09"
 
-    const val ROLL_BASE_URL = "https://www.mxnzp.com/api/"
+    private const val HOST = "www.mxnzp.com"
+    const val ROLL_BASE_URL = "https://${HOST}/api/"
 
     /*往年今日*/
     const val ROLL_TO_DAY_API = "history/today"

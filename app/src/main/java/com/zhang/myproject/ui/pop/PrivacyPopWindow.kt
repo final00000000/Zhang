@@ -12,11 +12,12 @@ import com.drake.spannable.replaceSpan
 import com.zhang.myproject.R
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.base.utils.toast.Toasty
+import com.zhang.myproject.common.ktx.getColorRes
+import com.zhang.myproject.common.ktx.getMargin32
+import com.zhang.myproject.common.ktx.getScreenWidth
+import com.zhang.myproject.common.ktx.getStringRes
+import com.zhang.myproject.common.ktx.viewBindViewBinding
 import com.zhang.myproject.common.utils.SimpleSpStringBuilder
-import com.zhang.myproject.common.utils.getColorRes
-import com.zhang.myproject.common.utils.getScreenWidth
-import com.zhang.myproject.common.utils.getStringRes
-import com.zhang.myproject.common.utils.viewBindViewBinding
 import com.zhang.myproject.databinding.PopWindowPrivacyBinding
 import razerdp.basepopup.BasePopupWindow
 import razerdp.util.animation.AnimationHelper
@@ -37,9 +38,10 @@ class PrivacyPopWindow(context: Context, private var success: (Boolean?) -> Unit
     init {
         mBinding =
             context.viewBindViewBinding(R.layout.pop_window_privacy) as PopWindowPrivacyBinding
-        contentView = mBinding!!.root
+        contentView = mBinding?.root
         popupGravity = Gravity.CENTER
-        width = (context.getScreenWidth() - dipToPx(32f) * 2).toInt()
+        width = getScreenWidth() - getMargin32()
+        height = WRAP_CONTENT
         setOutSideDismiss(false)
         setBackPressEnable(false)
         showAnimation = AnimationHelper.asAnimation()

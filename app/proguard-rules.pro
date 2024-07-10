@@ -205,3 +205,13 @@
 -keep public class androidx.renderscript.** { *; }
 #=====================================DialogX End===============================================#
 
+
+#===================================== ViewModel-Lifecycle ===============================================#
+-keepclassmembers class * extends androidx.lifecycle.ViewModel {
+    <init>(android.app.Application);
+    <init>();
+}
+-keep class androidx.lifecycle.** { *; }
+-keep @androidx.lifecycle.* class * { *; }
+#===================================== ViewModel-Lifecycle End===============================================#
+

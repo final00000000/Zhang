@@ -10,6 +10,8 @@ import com.zhang.home.fragment.ui.activity.TodayInHistoryActivity
 import com.zhang.myproject.base.fragment.BaseVBVMFragment
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
+import com.zhang.myproject.common.utils.TheRouterUtils
+import timber.log.Timber
 
 class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
@@ -28,7 +30,7 @@ class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override fun setOnViewClick() {
         mViewBinding.apply {
             tvTodayInHistory.singleClick {
-                startActivity(Intent(requireActivity(), TodayInHistoryActivity::class.java))
+                TheRouterUtils.goTodayInHistory()
             }
         }
     }
@@ -36,7 +38,7 @@ class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override fun createObserver() {
         mViewModel.homeLiveData.observe(this) {
             finishLoading()
-            mViewBinding.tvIp.initHomeShowData(it.first, it.second)
+            mViewBinding.tvIp.initHomeShowData(it.first, it.second, it.third)
         }
     }
 

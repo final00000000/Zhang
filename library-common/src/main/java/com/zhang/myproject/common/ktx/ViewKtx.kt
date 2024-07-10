@@ -1,4 +1,4 @@
-package com.zhang.myproject.common.utils
+package com.zhang.myproject.common.ktx
 
 import android.app.Application
 import android.content.Context
@@ -19,6 +19,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.zhang.myproject.base.AppGlobals
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
@@ -80,8 +81,8 @@ private fun dpConversionPx(context: Context, dpVal: Float): Int {
 /**
  * 获得屏幕宽度
  */
-fun Context?.getScreenWidth(): Int {
-    this?.let {
+fun getScreenWidth(): Int {
+    AppGlobals.get()?.let {
         val dm: DisplayMetrics = it.resources.displayMetrics
         return dm.widthPixels
     }
@@ -91,13 +92,19 @@ fun Context?.getScreenWidth(): Int {
 /**
  * 获得屏幕高度
  */
-fun Context?.getScreenHeight(): Int {
-    this?.let {
+fun getScreenHeight(): Int {
+    AppGlobals.get()?.let {
         val dm: DisplayMetrics = it.resources.displayMetrics
         return dm.heightPixels
     }
     return 0
 }
+
+/**
+ * 获取margin32
+ * @return Int
+ */
+fun getMargin32(): Int = dpToPx(32f) * 2
 
 /**
  * 计时器
@@ -110,6 +117,7 @@ fun Context?.getScreenHeight(): Int {
  * @param scope CoroutineScope
  * @return Job
  */
+@OptIn(DelicateCoroutinesApi::class)
 fun countDownCoroutines(
     total: Int = Int.MAX_VALUE,
     intervalTime: Long = 1000,

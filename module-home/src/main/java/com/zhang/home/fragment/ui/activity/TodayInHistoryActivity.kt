@@ -5,18 +5,22 @@ import coil.load
 import com.drake.brv.BindingAdapter
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
+import com.therouter.router.Route
 import com.zhang.home.R
 import com.zhang.home.databinding.ActivityTodayInHistoryBinding
 import com.zhang.home.databinding.ItemTodayInHistoryBinding
 import com.zhang.home.fragment.data.ToDayData
 import com.zhang.home.fragment.model.TodayInHistoryViewModel
 import com.zhang.myproject.base.activity.BaseVBVMActivity
+import com.zhang.myproject.common.constant.TheRouterConstant
+import com.zhang.myproject.common.utils.TheRouterUtils
 
 /**
  * Date: 2024/1/16
  * Author : Zhang
  * Description :
  */
+@Route(path = TheRouterConstant.TODAY_IN_HISTORY)
 class TodayInHistoryActivity :
     BaseVBVMActivity<ActivityTodayInHistoryBinding, TodayInHistoryViewModel>(R.layout.activity_today_in_history) {
 
@@ -28,6 +32,10 @@ class TodayInHistoryActivity :
             mViewModel.initViewModel()
             initRV()
         }
+    }
+
+    override fun setOnViewClick() {
+
     }
 
     private fun initRV() {
@@ -46,20 +54,20 @@ class TodayInHistoryActivity :
                             tvContent.text = getModel<ToDayData>().details
                         }
                     }
+                    R.id.cl_root.onClick {
+                        val data = mAdapter?._data?.get(layoutPosition) as ToDayData
+
+                        TheRouterUtils.goTodayInHistoryDetails(data.picUrl,data.details)
+                    }
                 }
             }.showLoading()
-        }
-    }
-
-
-    override fun setOnViewClick() {
-        mViewBinding.apply {
         }
     }
 
     override fun createObserver() {
         mViewBinding.apply {
             mViewModel.toDayLiveData.observe(this@TodayInHistoryActivity) {
+                finishLoading()
                 mAdapter?.models = it
                 sRefresh.showContent()
             }

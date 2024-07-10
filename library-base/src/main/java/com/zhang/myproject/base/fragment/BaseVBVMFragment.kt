@@ -18,7 +18,6 @@ import com.zhang.myproject.base.manager.NetworkManager
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.toast.Toasty
-import timber.log.Timber
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -65,6 +64,7 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         setOnViewClick()
         // 数据观察
         createObserver()
+        // 显示loading
         showLoading()
     }
 
@@ -74,7 +74,6 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         // 销毁loading
         lifecycle.addObserver(object : LifecycleEventObserver {
             override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-                Timber.d("测试_76：${event}")
                 if (event == Lifecycle.Event.ON_DESTROY) {
                     finishLoading()
                 }

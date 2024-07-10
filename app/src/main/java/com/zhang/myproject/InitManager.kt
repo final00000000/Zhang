@@ -16,7 +16,7 @@ import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
-import com.zhang.myproject.base.RollApiConstant
+import com.zhang.myproject.base.api.RollApiConstant
 import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.net.GlobalHeaderInterceptor
 import com.zhang.myproject.base.net.GsonConverter

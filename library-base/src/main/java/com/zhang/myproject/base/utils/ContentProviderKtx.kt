@@ -20,7 +20,7 @@ import com.zhang.myproject.base.manager.ActivityManager
 import com.zhang.myproject.base.manager.NetworkStateReceive
 import timber.log.Timber
 
-class Ktx : ContentProvider() {
+class ContentProviderKtx : ContentProvider() {
 
     companion object {
         lateinit var app: Application

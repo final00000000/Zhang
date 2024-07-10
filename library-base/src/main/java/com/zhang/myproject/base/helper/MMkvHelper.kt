@@ -87,15 +87,11 @@ object MMkvHelper {
     }
 
     fun removeObject(key: String?) {
-        if (mMMkv != null) {
-            mMMkv.remove(key)
-        }
+        mMMkv.remove(key)
     }
 
     fun clearAll() {
-        if (mMMkv != null) {
-            mMMkv.clearAll()
-        }
+        mMMkv.clearAll()
     }
 
 }

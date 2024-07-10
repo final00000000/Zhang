@@ -10,8 +10,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.NonNull
-import com.hjq.permissions.IPermissionInterceptor
 import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.OnPermissionInterceptor
 import com.hjq.permissions.OnPermissionPageCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.PermissionFragment
@@ -26,8 +26,8 @@ import com.zhang.myproject.resource.R
  * Date: 2024/1/4
  * Author : Zhang
  * Description : 权限申请拦截器
-*/
-class PermissionInterceptor : IPermissionInterceptor {
+ */
+class PermissionInterceptor : OnPermissionInterceptor {
     /** 权限申请标记  */
     private var mRequestFlag = false
 

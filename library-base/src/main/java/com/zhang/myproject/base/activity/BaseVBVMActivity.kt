@@ -12,6 +12,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.kongzue.dialogx.dialogs.WaitDialog
+import com.therouter.TheRouter
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
@@ -22,7 +24,6 @@ import com.zhang.myproject.base.utils.getVmClass
 import com.zhang.myproject.base.utils.initToolbarBarHeight
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.base.utils.toast.Toasty
-import timber.log.Timber
 
 
 /**
@@ -38,6 +39,8 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
 
     protected lateinit var mViewBinding: VB
 
+    private var mLoading: WaitDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         NetworkManager.instance.mNetworkStateCallback.observeSticky(this) {
@@ -47,17 +50,17 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
             this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[getVmClass(this)]
         if (isLayoutToolbar()) {
-            setContentView(R.layout.activity_base)
-            findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
-            /**
-             * 添加内容区
-             */
-            findViewById<FrameLayout>(R.id.baseContent).addView(initViewBinding())
-            /**
-             * toolbar返回键
-             */
             try {
-                findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { killMyself() }
+                setContentView(R.layout.activity_base)
+                findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
+                /**
+                 * 添加内容区
+                 */
+                findViewById<FrameLayout>(R.id.baseContent).addView(initViewBinding())
+                /**
+                 * toolbar返回键
+                 */
+                findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { finish() }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -81,12 +84,16 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     override fun isLayoutToolbar(): Boolean = true
 
     private fun init(savedInstanceState: Bundle?) {
+        TheRouter.inject(this)
+        initLoading()
         //初始化控件
         initView(savedInstanceState)
         // 设置监听
         setOnViewClick()
         // 数据观察
         createObserver()
+
+        startLoading()
 
         NetworkManager.instance.mNetworkStateCallback.observeSticky(this) {
             onNetworkStateChanged(it)
@@ -99,13 +106,25 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
 
     protected abstract fun createObserver()
 
+    private fun initLoading() {
+        mLoading = WaitDialog.build().setOnBackPressedListener {
+            false
+        }
+    }
+
 
     override fun startLoading() {
-
+        if (mLoading != null && mLoading?.isShow == false) {
+            mLoading?.show()
+        } else {
+            mLoading?.doDismiss()
+        }
     }
 
     override fun finishLoading() {
-
+        if (mLoading != null && mLoading?.isShow == true) {
+            mLoading?.doDismiss()
+        }
     }
 
     override fun showEmptyView() {
@@ -160,10 +179,4 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
             Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }
     }
-
-    private fun killMyself() {
-        Timber.d("测试_159：finish")
-        finish()
-    }
-
 }

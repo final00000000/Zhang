@@ -2,7 +2,7 @@ package com.zhang.myproject.base.net
 
 import com.drake.net.interceptor.RequestInterceptor
 import com.drake.net.request.BaseRequest
-import com.zhang.myproject.base.RollApiConstant
+import com.zhang.myproject.base.api.RollApiConstant
 import okhttp3.Interceptor
 import okhttp3.Response
 

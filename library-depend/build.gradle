@@ -25,11 +25,11 @@ dependencies {
     api fileTree(include: ['*.jar','*.aar'], dir: 'libs')
     /*  这样会有依赖更新提醒  */
 
-    api 'androidx.core:core-ktx:1.12.0'
+    api 'androidx.core:core-ktx:1.13.1'
     api 'androidx.appcompat:appcompat:1.6.1'
-    api 'com.google.android.material:material:1.10.0'
-    api 'androidx.activity:activity-ktx:1.8.2'
-    api 'androidx.fragment:fragment-ktx:1.6.2'
+    api 'com.google.android.material:material:1.12.0'
+    api 'androidx.activity:activity-ktx:1.9.0'
+    api 'androidx.fragment:fragment-ktx:1.8.0'
 
     //recyclerview
     api 'androidx.recyclerview:recyclerview:1.3.2'
@@ -45,7 +45,8 @@ dependencies {
 
     // Lifecycle
     api "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
-    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+//    api "androidx.lifecycle:lifecycle-extensions:2.8.2"
+
     api 'androidx.core:core-splashscreen:1.0.0'
 
 
@@ -59,7 +60,7 @@ dependencies {
     // 高德3D地图-导航-搜索-定位
     //api 'com.AMap.api:3DMap:9.8.2'
     api 'com.amap.api:navi-3dmap:9.8.3_3dmap9.8.3'
-    api 'com.amap.api:search:9.7.0'
+    api 'com.amap.api:search:9.7.1'
     //api 'com.AMap.api:location:6.4.0'
 
     // MMkv   https://github.com/Tencent/MMKV
@@ -72,8 +73,8 @@ dependencies {
     api 'com.kunminx.arch:unpeek-livedata:7.8.0'
 
     // 协程  https://github.com/Kotlin/kotlinx.coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1'
 
     // okhttp  https://github.com/square/okhttp
     api 'com.squareup.okhttp3:okhttp:4.12.0' // 要求OkHttp4以上
@@ -104,7 +105,7 @@ dependencies {
     api 'com.github.liangjingkanji:spannable:1.2.7'
 
     // Coil   https://github.com/coil-kt/coil
-    api 'io.coil-kt:coil:2.5.0'
+    api 'io.coil-kt:coil:2.6.0'
     api 'io.coil-kt:coil-gif:2.5.0'
 
     // fastJson   https://github.com/alibaba/fastjson
@@ -121,10 +122,10 @@ dependencies {
     api 'com.makeramen:roundedimageview:2.3.0'
 
     // 权限申请            https://github.com/getActivity/XXPermissions
-    api "com.github.getActivity:XXPermissions:18.5"
+    api "com.github.getActivity:XXPermissions:18.65"
 
     // Lottie动画         https://github.com/airbnb/lottie-android
-    api "com.airbnb.android:lottie:6.3.0"
+    api "com.airbnb.android:lottie:6.4.1"
 
     // 屏幕适配            https://github.com/intuit/sdp
     //api "com.intuit.sdp:sdp-android:1.1.0"
@@ -135,11 +136,18 @@ dependencies {
     api 'io.github.razerdp:BasePopup:3.2.1'
 
     //DialogX  https://github.com/kongzue/DialogX/wiki/
-//    api 'com.github.kongzue.DialogX:DialogX:0.0.49'
     //IOS风格
     api 'com.kongzue.dialogx.style:DialogXIOSStyle:0.0.49'
 
     //X5WebView  https://x5.tencent.com/docs/access.html
     api 'com.tencent.tbs:tbssdk:44286'
-    debugApi 'com.squareup.leakcanary:leakcanary-android:3.0-alpha-1'
+    //debugApi 'com.squareup.leakcanary:leakcanary-android:3.0-alpha-1'
+
+    //个推推送 https://docs.getui.com/getui/mobile/android/androidstudio/
+    api 'com.getui:gtsdk:3.3.7.0'  //个推SDK
+    api 'com.getui:gtc:3.2.16.0'  //个推核心组件
+
+    //TheRouter https://github.com/HuolalaTech/hll-wp-therouter-android
+    api "cn.therouter:router:1.2.1"
+    kapt "cn.therouter:apt:1.2.1"
 }

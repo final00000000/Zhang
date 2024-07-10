@@ -5,12 +5,10 @@ import android.view.Gravity
 import com.zhang.myproject.base.utils.singleClick
 import com.zhang.myproject.common.R
 import com.zhang.myproject.common.databinding.PermissionRequestFailPopWindowBinding
-import com.zhang.myproject.common.utils.getScreenWidth
-import com.zhang.myproject.common.utils.viewBindViewBinding
+import com.zhang.myproject.common.ktx.getMargin32
+import com.zhang.myproject.common.ktx.getScreenWidth
+import com.zhang.myproject.common.ktx.viewBindViewBinding
 import razerdp.basepopup.BasePopupWindow
-import razerdp.util.animation.AnimationHelper
-import razerdp.util.animation.Direction
-import razerdp.util.animation.TranslationConfig
 
 /**
  * Date: 2023/12/8
@@ -26,12 +24,8 @@ class PermissionRequestFailPopWindow(context: Context) : BasePopupWindow(context
             context.viewBindViewBinding(R.layout.permission_request_fail_pop_window) as PermissionRequestFailPopWindowBinding
         contentView = mBinding?.root
         popupGravity = Gravity.CENTER
-        width = context.getScreenWidth() - (dipToPx(32f).toInt() * 2)
+        width = getScreenWidth() - getMargin32()
         setOutSideDismiss(true)
-//        showAnimation = AnimationHelper.asAnimation()
-//            .withTranslation(TranslationConfig().from(Direction.BOTTOM)).toShow()
-//        dismissAnimation = AnimationHelper.asAnimation()
-//            .withTranslation(TranslationConfig.TO_TOP).toDismiss()
         mBinding?.apply {
             tvExit.singleClick {
                 dismiss()

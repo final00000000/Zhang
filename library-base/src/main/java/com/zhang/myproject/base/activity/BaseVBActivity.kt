@@ -10,6 +10,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
+import com.therouter.TheRouter
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
@@ -48,12 +49,12 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
             /**
              * toolbar返回键
              */
-            findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { killMyself() }
+            findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { finish() }
             findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
         } else {
             setContentView(initViewBinding())
         }
-
+        TheRouter.inject(this)
         //初始化控件
         initView(savedInstanceState)
         // 设置监听
@@ -129,10 +130,6 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         if (!netState.isSuccess) {
             Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }
-    }
-
-    protected fun killMyself() {
-        finish()
     }
 
 }

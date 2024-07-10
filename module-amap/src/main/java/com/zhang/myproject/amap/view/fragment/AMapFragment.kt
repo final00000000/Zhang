@@ -22,8 +22,8 @@ import com.zhang.myproject.amap.R
 import com.zhang.myproject.amap.databinding.FragmentAMapBinding
 import com.zhang.myproject.base.fragment.BaseVBFragment
 import com.zhang.myproject.base.helper.MMkvHelperUtils
-import com.zhang.myproject.common.utils.getDrawableRes
-import com.zhang.myproject.common.utils.requestLocationPermission
+import com.zhang.myproject.common.ktx.getDrawableRes
+import com.zhang.myproject.common.ktx.requestLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils
 
 class AMapFragment : BaseVBFragment<FragmentAMapBinding>(R.layout.fragment_a_map),

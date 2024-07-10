@@ -3,16 +3,14 @@ package com.zhang.myproject.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.tencent.smtt.export.external.TbsCoreSettings
 import com.tencent.smtt.sdk.QbSdk
 import com.zhang.myproject.MainActivity
 import com.zhang.myproject.base.AppGlobals
 import com.zhang.myproject.base.activity.BaseActivity
 import com.zhang.myproject.base.helper.MMkvHelperUtils
-import com.zhang.myproject.common.utils.countDownCoroutines
+import com.zhang.myproject.common.ktx.countDownCoroutines
 import com.zhang.myproject.init
-import com.zhang.myproject.resource.constant.APPKeyConstant
 import com.zhang.myproject.ui.pop.PrivacyPopWindow
 import timber.log.Timber
 
@@ -31,8 +29,8 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun initView() {
-        installSplashScreen().setKeepOnScreenCondition { true }
-        MMkvHelperUtils.saveFirstStart(APPKeyConstant.FIRST_START)
+//        installSplashScreen().setKeepOnScreenCondition { true }
+//        MMkvHelperUtils.saveFirstStart(APPKeyConstant.FIRST_START)
 //        initX5WebView()
         if (MMkvHelperUtils.getConsentToPrivacy()) {
             startMain()

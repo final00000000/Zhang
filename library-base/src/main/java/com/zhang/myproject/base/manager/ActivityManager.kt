@@ -27,12 +27,10 @@ class ActivityManager private constructor() {
     inner class InnerActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
 
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-            LogCat.d("测试_onActivityCreated：${activity.componentName.className}")
             activityRefs.add(WeakReference(activity))
         }
 
         override fun onActivityStarted(activity: Activity) {
-            LogCat.d("测试_onActivityStarted：${activity.componentName.className}")
             activityStartCount++
             //activityStartCount>0  说明应用处在可见状态，也就是前台
             //!front 之前是不是在后台
@@ -43,15 +41,12 @@ class ActivityManager private constructor() {
         }
 
         override fun onActivityResumed(activity: Activity) {
-            LogCat.d("测试_onActivityResumed：${activity.componentName.className}")
         }
 
         override fun onActivityPaused(activity: Activity) {
-            LogCat.d("测试_onActivityPaused：${activity.componentName.className}")
         }
 
         override fun onActivityStopped(activity: Activity) {
-            LogCat.d("测试_onActivityStopped：${activity.componentName.className}")
             activityStartCount--
             if (activityStartCount <= 0 && front) {
                 front = false
@@ -60,9 +55,8 @@ class ActivityManager private constructor() {
         }
 
         override fun onActivityDestroyed(activity: Activity) {
-            LogCat.d("测试_onActivityDestroyed：${activity.componentName.className}")
             for (activityRef in activityRefs) {
-                if (activityRef != null && activityRef.get() == activity) {
+                if (activityRef.get() == activity) {
                     activityRefs.remove(activityRef)
                     break
                 }
@@ -70,7 +64,6 @@ class ActivityManager private constructor() {
         }
 
         override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-            LogCat.d("测试_onActivitySaveInstanceState：${activity.componentName.className}")
         }
     }
 

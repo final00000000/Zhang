@@ -12,6 +12,7 @@ import android.text.TextPaint
 import android.text.style.*
 import android.util.TypedValue
 import android.view.View
+import com.zhang.myproject.common.ktx.getColorRes
 import com.zhang.myproject.resource.R
 
 

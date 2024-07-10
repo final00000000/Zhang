@@ -1,4 +1,4 @@
-package com.zhang.myproject.common.utils
+package com.zhang.myproject.common.ktx
 
 import android.content.Context
 import com.hjq.permissions.XXPermissions

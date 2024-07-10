@@ -3,6 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven {
+            url "https://mvn.getui.com/nexus/content/repositories/releases/"
+        }
         gradlePluginPortal()
     }
 }
@@ -12,6 +15,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven {
+            url "https://mvn.getui.com/nexus/content/repositories/releases/"
+        }
         gradlePluginPortal()
     }
 }

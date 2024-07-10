@@ -1,8 +1,7 @@
 package com.zhang.myproject
 
 import android.app.Application
-import com.zhang.myproject.common.utils.mApplication
-import leakcanary.LeakCanary
+import com.zhang.myproject.common.ktx.mApplication
 
 /**
  * Date: 2023/10/10

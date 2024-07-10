@@ -7,7 +7,7 @@
     <application>
 
         <provider
-            android:name=".utils.Ktx"
+            android:name=".utils.ContentProviderKtx"
             android:authorities="${applicationId}.KtxInstaller"
             android:exported="false"
             android:grantUriPermissions="true"

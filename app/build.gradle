@@ -2,6 +2,7 @@ import com.zhang.buildSrc.*
 
 plugins {
     id 'com.android.application'
+    id 'therouter'
 }
 apply from: '../common.gradle'
 
@@ -26,6 +27,12 @@ android {
         }
         renderscriptTargetApi 24
         renderscriptSupportModeEnabled true
+
+        manifestPlaceholders = [
+                //从 3.1.2.0 版本开始，APPID 占位符从 GETUI_APP_ID 切换为 GETUI_APPID
+                //后续所有产品的 APPID 均统一配置为 GETUI_APPID 占位符
+                GETUI_APPID       : "4V72yTwJX36DP9nv4Rhvf4",
+        ]
     }
 
     signingConfigs {
@@ -99,4 +106,5 @@ dependencies {
     implementation project(':module-found')
     implementation project(':module-amap')
     implementation project(':module-mine')
+    kapt "cn.therouter:apt:1.2.1"
 }

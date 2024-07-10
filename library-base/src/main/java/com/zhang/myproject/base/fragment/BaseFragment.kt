@@ -1,6 +1,8 @@
 package com.zhang.myproject.base.fragment
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.therouter.TheRouter
 
 /**
  * @Author : zhang
@@ -10,6 +12,10 @@ import androidx.fragment.app.Fragment
  */
 abstract class BaseFragment : Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        TheRouter.inject(this)
+    }
     /**
      * 检测 宿主 是否还存活
      */
