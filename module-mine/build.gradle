@@ -23,5 +23,5 @@ android {
 dependencies {
     // 业务相关公共类
     implementation project(':library-common')
-    kapt "cn.therouter:apt:1.2.1"
+    //kapt "cn.therouter:apt:1.2.1"
 }

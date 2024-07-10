@@ -2,7 +2,7 @@ import com.zhang.buildSrc.*
 
 plugins {
     id 'com.android.application'
-    id 'therouter'
+    //id 'therouter'
 }
 apply from: '../common.gradle'
 
@@ -23,7 +23,7 @@ android {
 
         ndk {
             //选择要添加的对应 cpu 类型的 .so 库。
-            abiFilters 'arm64-v8a','armeabi-v7a'
+            abiFilters 'arm64-v8a'/*,'armeabi-v7a'*/
         }
         renderscriptTargetApi 24
         renderscriptSupportModeEnabled true
@@ -73,8 +73,8 @@ android {
 
 
     //定义输出文件名
-    applicationVariants.all { variant ->
-        variant.outputs.all {
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
             def appName = "demo"
             def time = releaseTime()
             def buildType = variant.buildType.name
@@ -106,5 +106,5 @@ dependencies {
     implementation project(':module-found')
     implementation project(':module-amap')
     implementation project(':module-mine')
-    kapt "cn.therouter:apt:1.2.1"
+    //kapt "cn.therouter:apt:1.2.1"
 }

@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.kongzue.dialogx.dialogs.WaitDialog
-import com.therouter.TheRouter
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
@@ -84,7 +83,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     override fun isLayoutToolbar(): Boolean = true
 
     private fun init(savedInstanceState: Bundle?) {
-        TheRouter.inject(this)
+        //TheRouter.inject(this)
         initLoading()
         //初始化控件
         initView(savedInstanceState)

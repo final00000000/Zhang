@@ -24,5 +24,5 @@ dependencies {
     api project(':library-resource')
     // 依赖
     api project(':library-depend')
-    kapt "cn.therouter:apt:1.2.1"
+    //kapt "cn.therouter:apt:1.2.1"
 }

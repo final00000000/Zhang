@@ -10,7 +10,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
-import com.therouter.TheRouter
 import com.zhang.myproject.base.R
 import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
@@ -54,7 +53,7 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         } else {
             setContentView(initViewBinding())
         }
-        TheRouter.inject(this)
+        //TheRouter.inject(this)
         //初始化控件
         initView(savedInstanceState)
         // 设置监听

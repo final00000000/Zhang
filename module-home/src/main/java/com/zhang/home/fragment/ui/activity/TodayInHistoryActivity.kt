@@ -1,26 +1,25 @@
 package com.zhang.home.fragment.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import coil.load
 import com.drake.brv.BindingAdapter
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
-import com.therouter.router.Route
 import com.zhang.home.R
 import com.zhang.home.databinding.ActivityTodayInHistoryBinding
 import com.zhang.home.databinding.ItemTodayInHistoryBinding
 import com.zhang.home.fragment.data.ToDayData
 import com.zhang.home.fragment.model.TodayInHistoryViewModel
 import com.zhang.myproject.base.activity.BaseVBVMActivity
-import com.zhang.myproject.common.constant.TheRouterConstant
-import com.zhang.myproject.common.utils.TheRouterUtils
+import com.zhang.myproject.common.ktx.moduleToJson
 
 /**
  * Date: 2024/1/16
  * Author : Zhang
  * Description :
  */
-@Route(path = TheRouterConstant.TODAY_IN_HISTORY)
+//@Route(path = TheRouterConstant.TODAY_IN_HISTORY)
 class TodayInHistoryActivity :
     BaseVBVMActivity<ActivityTodayInHistoryBinding, TodayInHistoryViewModel>(R.layout.activity_today_in_history) {
 
@@ -56,8 +55,9 @@ class TodayInHistoryActivity :
                     }
                     R.id.cl_root.onClick {
                         val data = mAdapter?._data?.get(layoutPosition) as ToDayData
-
-                        TheRouterUtils.goTodayInHistoryDetails(data.picUrl,data.details)
+                        startActivity(Intent(this@TodayInHistoryActivity, TodayInHistoryDetailActivity::class.java).apply {
+                            putExtra("data", moduleToJson(data))
+                        })
                     }
                 }
             }.showLoading()
