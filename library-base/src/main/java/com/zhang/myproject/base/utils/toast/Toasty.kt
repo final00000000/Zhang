@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import com.zhang.myproject.base.R
+import com.zhang.myproject.base.utils.find
 
 @SuppressLint("InflateParams", "StaticFieldLeak")
 object Toasty {
@@ -379,11 +380,10 @@ object Toasty {
         val toastLayout =
             (mContext.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater)
                 .inflate(R.layout.toast_layout, null)
-        val toastRoot = toastLayout.findViewById<LinearLayout>(R.id.toast_root)
-        val toastIcon = toastLayout.findViewById<ImageView>(R.id.toast_icon)
-        val toastTextView = toastLayout.findViewById<TextView>(R.id.toast_text)
-        val drawableFrame: Drawable
-        drawableFrame = if (shouldTint) ToastyUtils.tint9PatchDrawableFrame(
+        val toastRoot = toastLayout.find<LinearLayout>(R.id.toast_root)
+        val toastIcon = toastLayout.find<ImageView>(R.id.toast_icon)
+        val toastTextView = toastLayout.find<TextView>(R.id.toast_text)
+        val drawableFrame: Drawable = if (shouldTint) ToastyUtils.tint9PatchDrawableFrame(
             mContext,
             tintColor
         ) else ToastyUtils.getDrawable(mContext, R.drawable.toast_frame)!!

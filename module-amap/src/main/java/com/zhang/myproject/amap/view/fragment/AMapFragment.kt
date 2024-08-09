@@ -22,6 +22,7 @@ import com.zhang.myproject.amap.R
 import com.zhang.myproject.amap.databinding.FragmentAMapBinding
 import com.zhang.myproject.base.fragment.BaseVBFragment
 import com.zhang.myproject.base.helper.MMkvHelperUtils
+import com.zhang.myproject.base.utils.find
 import com.zhang.myproject.common.ktx.getDrawableRes
 import com.zhang.myproject.common.ktx.requestLocationPermission
 import me.jessyan.autosize.utils.AutoSizeUtils
@@ -150,10 +151,10 @@ class AMapFragment : BaseVBFragment<FragmentAMapBinding>(R.layout.fragment_a_map
             requireActivity(), com.zhang.myproject.resource.R.layout.layout_map_marker_view, null
         )
         val pointerView =
-            view.findViewById<AppCompatImageView>(com.zhang.myproject.resource.R.id.iv_pointer)
+            view.find<AppCompatImageView>(com.zhang.myproject.resource.R.id.iv_pointer)
         val headerView =
-            view.findViewById<RoundedImageView>(com.zhang.myproject.resource.R.id.iv_head)
-        headerView?.run {
+            view.find<RoundedImageView>(com.zhang.myproject.resource.R.id.iv_head)
+        headerView.run {
             this.setImageDrawable((getDrawableRes(com.zhang.myproject.resource.R.drawable.icon_default_marker)))
         }
         pointerView.rotation = angle

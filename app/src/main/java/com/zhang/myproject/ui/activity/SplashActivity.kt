@@ -1,5 +1,6 @@
 package com.zhang.myproject.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
@@ -19,6 +20,7 @@ import timber.log.Timber
  * Author : Zhang
  * Description :
  */
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
 
     private var mPrivacyPopWindow: PrivacyPopWindow? = null
@@ -83,5 +85,19 @@ class SplashActivity : BaseActivity() {
         } else {
             false
         }
+    }
+
+    override fun isLayoutToolbar(): Boolean = false
+
+    override fun startLoading() {
+    }
+
+    override fun finishLoading() {
+    }
+
+    override fun showEmptyView() {
+    }
+
+    override fun showNoNetWorkView(netWorkSuccess: Boolean?) {
     }
 }

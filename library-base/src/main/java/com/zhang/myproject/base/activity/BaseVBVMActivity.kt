@@ -14,9 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.kongzue.dialogx.dialogs.WaitDialog
 import com.zhang.myproject.base.R
-import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
 import com.zhang.myproject.base.manager.NetworkManager
+import com.zhang.myproject.base.utils.dpToPx
+import com.zhang.myproject.base.utils.find
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.getVmClass
@@ -31,7 +32,7 @@ import com.zhang.myproject.base.utils.toast.Toasty
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val layoutID: Int) : BaseActivity(), ActivityBaseCallBack {
+abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val layoutID: Int) : BaseActivity() {
 
 
     protected lateinit var mViewModel: VM
@@ -51,15 +52,15 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         if (isLayoutToolbar()) {
             try {
                 setContentView(R.layout.activity_base)
-                findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
+                find<View>(R.id.vvImmersionView).initToolbarBarHeight()
                 /**
                  * 添加内容区
                  */
-                findViewById<FrameLayout>(R.id.baseContent).addView(initViewBinding())
+                find<FrameLayout>(R.id.baseContent).addView(initViewBinding())
                 /**
                  * toolbar返回键
                  */
-                findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { finish() }
+                find<AppCompatImageView>(R.id.ivPageBack).singleClick { finish() }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -106,9 +107,14 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     protected abstract fun createObserver()
 
     private fun initLoading() {
-        mLoading = WaitDialog.build().setOnBackPressedListener {
-            false
-        }
+        mLoading = WaitDialog.build()
+            .setMinHeight(dpToPx(60f))
+            .setMinWidth(dpToPx(60f))
+            .setMaxWidth(dpToPx(60f))
+            .setMaxHeight(dpToPx(60f))
+            .setOnBackPressedListener {
+                false
+            }
     }
 
 
@@ -141,7 +147,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
+        find<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
     }
 
     /**
@@ -151,7 +157,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<TextView>(R.id.tvRightTitle).apply {
+        find<TextView>(R.id.tvRightTitle).apply {
             isVisible = getStringRes(rightTxt).isNotEmpty()
             text = getStringRes(rightTxt)
         }
@@ -164,7 +170,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<ImageView>(R.id.ivRightIcon).apply {
+        find<ImageView>(R.id.ivRightIcon).apply {
             isVisible = true
             setImageResource(rightIcon)
         }
@@ -173,7 +179,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     /**
      * 网络变化监听 子类重写
      */
-    protected fun onNetworkStateChanged(netState: NetWorkState) {
+    open fun onNetworkStateChanged(netState: NetWorkState) {
         if (!netState.isSuccess) {
             Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }

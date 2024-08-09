@@ -1,3 +1,5 @@
+import com.zhang.buildSrc.AndroidConfig
+
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
@@ -6,12 +8,12 @@ plugins {
 // 通用配置
 android {
     // 编译源码版本
-    compileSdk  33
+    compileSdk  AndroidConfig.compileSdk
     defaultConfig {
         // 最低安装版本
-        minSdk 26
+        minSdk AndroidConfig.minSdk
         // 目标适配版本
-        targetSdk 33
+        targetSdk AndroidConfig.targetSdk
         // 仅保留中文语种的资源 避免编译不必要的资源
         // resConfigs "cn"
     }

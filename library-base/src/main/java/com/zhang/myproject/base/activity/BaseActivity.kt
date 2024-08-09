@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
+import com.zhang.myproject.base.callback.ActivityBaseInterface
 import com.zhang.myproject.base.helper.MMkvHelperUtils
 
 
@@ -13,7 +14,7 @@ import com.zhang.myproject.base.helper.MMkvHelperUtils
  * @Class Describe : 描述
  * @Project Name : KotlinDemo
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), ActivityBaseInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

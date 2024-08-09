@@ -7,12 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isVisible
 import androidx.viewbinding.ViewBinding
 import com.zhang.myproject.base.R
-import com.zhang.myproject.base.callback.ActivityBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
+import com.zhang.myproject.base.utils.find
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.initToolbarBarHeight
@@ -25,7 +24,7 @@ import com.zhang.myproject.base.utils.toast.Toasty
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : BaseActivity(), ActivityBaseCallBack {
+abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : BaseActivity() {
 
     protected lateinit var mViewBinding: VB
 
@@ -41,15 +40,12 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         super.onCreate(savedInstanceState)
         if (isLayoutToolbar()) {
             setContentView(R.layout.activity_base)
-            /**
-             * 添加内容区
-             */
-            findViewById<FrameLayout>(R.id.baseContent).addView(initViewBinding())
+            find<FrameLayout>(R.id.baseContent).addView(initViewBinding())
             /**
              * toolbar返回键
              */
-            findViewById<AppCompatImageView>(R.id.ivPageBack).singleClick { finish() }
-            findViewById<View>(R.id.vvImmersionView).initToolbarBarHeight()
+            find<ImageView>(R.id.ivPageBack).singleClick { finish() }
+            find<View>(R.id.vvImmersionView).initToolbarBarHeight()
         } else {
             setContentView(initViewBinding())
         }
@@ -93,7 +89,7 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
+        find<TextView>(R.id.tvPageTitle).text = getStringRes(titleTxt)
     }
 
     /**
@@ -103,7 +99,7 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<TextView>(R.id.tvRightTitle).apply {
+        find<TextView>(R.id.tvRightTitle).apply {
             isVisible = getStringRes(rightTxt).isNotEmpty()
             text = getStringRes(rightTxt)
         }
@@ -116,7 +112,7 @@ abstract class BaseVBActivity<VB : ViewBinding>(@LayoutRes val layoutID: Int) : 
         if (!isLayoutToolbar()) {
             return
         }
-        findViewById<ImageView>(R.id.ivRightIcon).apply {
+        find<ImageView>(R.id.ivRightIcon).apply {
             isVisible = true
             setImageResource(rightIcon)
         }

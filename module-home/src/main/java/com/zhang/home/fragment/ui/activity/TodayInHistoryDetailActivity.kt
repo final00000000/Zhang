@@ -25,10 +25,7 @@ class TodayInHistoryDetailActivity :
         val data = intent?.getStringExtra("data")
         data?.let {
             val toDayData = jsonToModule(data, ToDayData::class.java)
-            mViewBinding.ivImg.load(toDayData.picUrl) {
-                placeholder(R.drawable.bg_error)
-                error(R.drawable.bg_error)
-            }
+            mViewBinding.ivImg.load(toDayData.picUrl)
             mViewBinding.tvData.text = toDayData.details
         }
         lifecycleScope.launch {

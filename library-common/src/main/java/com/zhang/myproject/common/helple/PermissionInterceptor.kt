@@ -18,6 +18,7 @@ import com.hjq.permissions.PermissionFragment
 import com.hjq.permissions.XXPermissions
 import com.kongzue.dialogx.dialogs.CustomDialog
 import com.kongzue.dialogx.interfaces.OnBindView
+import com.zhang.myproject.base.utils.find
 import com.zhang.myproject.base.utils.toast.Toasty
 import com.zhang.myproject.common.pop.PermissionRequestFailPopWindow
 import com.zhang.myproject.resource.R
@@ -169,9 +170,9 @@ class PermissionInterceptor : OnPermissionInterceptor {
             .setCustomView(object :
                 OnBindView<CustomDialog>(com.zhang.myproject.common.R.layout.permission_tips_dialog) {
                 override fun onBind(dialog: CustomDialog?, v: View?) {
-                    v?.findViewById<TextView>(com.zhang.myproject.common.R.id.tv_permission_description_title)?.text =
+                    v?.find<TextView>(com.zhang.myproject.common.R.id.tv_permission_description_title)?.text =
                         title
-                    v?.findViewById<TextView>(com.zhang.myproject.common.R.id.tv_permission_description_message)?.text =
+                    v?.find<TextView>(com.zhang.myproject.common.R.id.tv_permission_description_message)?.text =
                         message
                 }
             })

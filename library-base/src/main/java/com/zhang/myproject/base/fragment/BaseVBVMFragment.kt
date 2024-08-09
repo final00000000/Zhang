@@ -15,6 +15,7 @@ import com.kongzue.dialogx.dialogs.WaitDialog
 import com.zhang.myproject.base.callback.FragmentBaseCallBack
 import com.zhang.myproject.base.data.NetWorkState
 import com.zhang.myproject.base.manager.NetworkManager
+import com.zhang.myproject.base.utils.dpToPx
 import com.zhang.myproject.base.utils.getStringRes
 import com.zhang.myproject.base.utils.getViewBindingForActivity
 import com.zhang.myproject.base.utils.toast.Toasty
@@ -52,9 +53,14 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     }
 
     private fun initLoading() {
-        mLoading = WaitDialog.build().setOnBackPressedListener {
-            false
-        }
+        mLoading = WaitDialog.build()
+            .setMinHeight(dpToPx(60f))
+            .setMinWidth(dpToPx(60f))
+            .setMaxWidth(dpToPx(60f))
+            .setMaxHeight(dpToPx(60f))
+            .setOnBackPressedListener {
+                false
+            }
     }
 
     private fun init(savedInstanceState: Bundle?) {
@@ -113,7 +119,7 @@ abstract class BaseVBVMFragment<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
     /**
      * 网络变化监听 子类重写
      */
-    protected fun onNetworkStateChanged(netState: NetWorkState) {
+    open fun onNetworkStateChanged(netState: NetWorkState) {
         if (!netState.isSuccess) {
             Toasty.error(getStringRes(com.zhang.myproject.resource.R.string.net_error))
         }

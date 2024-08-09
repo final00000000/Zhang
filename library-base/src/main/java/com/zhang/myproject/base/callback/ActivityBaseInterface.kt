@@ -6,7 +6,7 @@ package com.zhang.myproject.base.callback
  * @Class Describe : 描述
  * @Project Name : MyDemo
  */
-interface ActivityBaseCallBack {
+interface ActivityBaseInterface {
     /**
      * 是否需要使用带有TitleBar的父容器
      */
