@@ -28,7 +28,7 @@ class HomeViewModel : BaseViewModel() {
     private fun getData() {
         scopeNetLife {
             val ipData = Get<IPData>(RollApiConstant.ROLL_IP_ADDRESS).await()
-            delay(500)
+            delay(1000)
             val cityWeatherData = Get<CityWeatherData>("${RollApiConstant.ROLL_QUERY_CURRENT_CITY_WEATHER}${ipData.city}").await()
             val accessorInfo = Get<AccessorInfoData>(HanApiConstant.VISITOR_INFORMATION).await()
             _homeLiveData.value = Triple(ipData, cityWeatherData, accessorInfo)
