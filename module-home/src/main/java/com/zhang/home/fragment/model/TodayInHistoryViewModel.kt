@@ -1,7 +1,6 @@
 package com.zhang.home.fragment.model
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.scopeNetLife
 import com.drake.net.Get
 import com.zhang.home.fragment.data.ToDayData
 import com.zhang.myproject.base.api.RollApiConstant
