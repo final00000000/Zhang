@@ -15,8 +15,9 @@ import java.lang.reflect.ParameterizedType
 /**
  * 获取当前类绑定的泛型ViewModel-clazz
  */
-fun <VM> getVmClass(obj: AppCompatActivity): VM {
-    return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as VM
+@Suppress("UNCHECKED_CAST")
+fun <VM : ViewModel> getVmClass(obj: AppCompatActivity): Class<VM> {
+    return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as Class<VM>
 }
 
 inline fun <reified VM : ViewModel> AppCompatActivity.viewModelOf(

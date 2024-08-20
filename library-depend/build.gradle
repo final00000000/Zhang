@@ -26,7 +26,7 @@ dependencies {
     /*  这样会有依赖更新提醒  */
 
     api 'androidx.core:core-ktx:1.13.1'
-    api 'androidx.appcompat:appcompat:1.6.1'
+    api 'androidx.appcompat:appcompat:1.7.0'
     api 'com.google.android.material:material:1.12.0'
     api 'androidx.activity:activity-ktx:1.9.0'
     api 'androidx.fragment:fragment-ktx:1.8.0'
@@ -41,10 +41,10 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // ViewModel
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2'
 
     // Lifecycle
-    api "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.2"
 //    api "androidx.lifecycle:lifecycle-extensions:2.8.2"
 
     api 'androidx.core:core-splashscreen:1.0.0'
@@ -64,7 +64,7 @@ dependencies {
     //api 'com.AMap.api:location:6.4.0'
 
     // MMkv   https://github.com/Tencent/MMKV
-    api 'com.tencent:mmkv:1.3.2'
+    api 'com.tencent:mmkv:1.3.9'
 
     // 日志打印框架   https://github.com/naman14/Timber
     api "com.jakewharton.timber:timber:5.0.1"
@@ -116,13 +116,13 @@ dependencies {
     api 'com.github.angcyo.DslTablayout:ViewPager2Delegate:3.5.5'
 
     // Gson  https://github.com/google/gson
-    api 'com.google.code.gson:gson:2.10.1'
+    api 'com.google.code.gson:gson:2.11.0'
 
     // 圆形图  https://github.com/vinc3m1/RoundedImageView
     api 'com.makeramen:roundedimageview:2.3.0'
 
     // 权限申请            https://github.com/getActivity/XXPermissions
-    api "com.github.getActivity:XXPermissions:18.65"
+    api "com.github.getActivity:XXPermissions:20.0"
 
     // Lottie动画         https://github.com/airbnb/lottie-android
     api "com.airbnb.android:lottie:6.4.1"

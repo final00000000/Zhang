@@ -1,14 +1,18 @@
 package com.zhang.home.fragment.model
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.scopeNetLife
+import androidx.lifecycle.ViewModel
 import com.drake.net.Get
+import com.drake.net.scope.NetCoroutineScope
 import com.zhang.home.fragment.data.AccessorInfoData
 import com.zhang.home.fragment.data.CityWeatherData
 import com.zhang.home.fragment.data.IPData
 import com.zhang.myproject.base.api.HanApiConstant
 import com.zhang.myproject.base.api.RollApiConstant
 import com.zhang.myproject.base.model.BaseViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import timber.log.Timber
 
@@ -37,4 +41,20 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
+}
+
+/**
+ * ViewModel升级到282版本 net请求库暂时未兼容 暂时解决防止崩溃 待Net请求库更新
+ * @receiver ViewModel
+ * @param dispatcher CoroutineDispatcher
+ * @param block [@kotlin.ExtensionFunctionType] SuspendFunction1<CoroutineScope, Unit>
+ * @return NetCoroutineScope
+ */
+fun ViewModel.scopeNetLife(
+    dispatcher: CoroutineDispatcher = Dispatchers.Main,
+    block: suspend CoroutineScope.() -> Unit
+): NetCoroutineScope {
+    val scope = NetCoroutineScope(dispatcher = dispatcher).launch(block)
+    addCloseable (scope.toString(), scope)
+    return getCloseable(scope.toString()) ?: NetCoroutineScope()
 }
