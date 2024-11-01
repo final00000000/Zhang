@@ -150,4 +150,5 @@ dependencies {
     //TheRouter https://github.com/HuolalaTech/hll-wp-therouter-android
     //api "cn.therouter:router:1.2.1"
     //kapt "cn.therouter:apt:1.2.1"
+    kapt 'androidx.databinding:databinding-compiler:8.2.0'
 }
