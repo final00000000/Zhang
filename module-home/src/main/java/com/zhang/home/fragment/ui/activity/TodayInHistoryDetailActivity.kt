@@ -2,7 +2,7 @@ package com.zhang.home.fragment.ui.activity
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import coil.load
+import coil3.load
 import com.zhang.home.R
 import com.zhang.home.databinding.ActivityTodayInHistoryDetailBinding
 import com.zhang.home.fragment.data.ToDayData

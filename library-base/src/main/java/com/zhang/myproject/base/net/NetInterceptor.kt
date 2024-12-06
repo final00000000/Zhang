@@ -12,14 +12,16 @@ class GlobalHeaderInterceptor : RequestInterceptor {
 
     /** 本方法每次请求发起都会调用, 这里添加的参数可以是动态参数 */
     override fun interceptor(request: BaseRequest) {
-        request.addQuery("app_id", RollApiConstant.ROLL_APP_ID)
-        request.addQuery("app_secret", RollApiConstant.ROLL_APP_SECRET)
+        if (request.buildRequest().url.host.contains(RollApiConstant.HOST)) {
+            request.addQuery("app_id", RollApiConstant.ROLL_APP_ID)
+            request.addQuery("app_secret", RollApiConstant.ROLL_APP_SECRET)
+        }
     }
 }
+
 class NetInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        val response = chain.proceed(request)
-        return response
+        return chain.proceed(request)
     }
 }

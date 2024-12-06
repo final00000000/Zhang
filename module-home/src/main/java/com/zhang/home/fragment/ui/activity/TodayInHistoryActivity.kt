@@ -2,7 +2,8 @@ package com.zhang.home.fragment.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import coil.load
+import coil3.load
+import coil3.request.placeholder
 import com.drake.brv.BindingAdapter
 import com.drake.brv.utils.linear
 import com.drake.brv.utils.setup
@@ -12,6 +13,7 @@ import com.zhang.home.databinding.ItemTodayInHistoryBinding
 import com.zhang.home.fragment.data.ToDayData
 import com.zhang.home.fragment.model.TodayInHistoryViewModel
 import com.zhang.myproject.base.activity.BaseVBVMActivity
+import com.zhang.myproject.common.ktx.getDrawableRes
 import com.zhang.myproject.common.ktx.moduleToJson
 
 /**
@@ -46,7 +48,7 @@ class TodayInHistoryActivity :
                         val binding = getBinding<ItemTodayInHistoryBinding>()
                         binding.apply {
                             ivIcon.load(getModel<ToDayData>().picUrl) {
-                                placeholder(R.drawable.icon_default_image)
+                                placeholder(getDrawableRes(R.drawable.icon_default_image))
                                 error(R.drawable.icon_default_image)
                             }
                             tvTitle.text = getModel<ToDayData>().title

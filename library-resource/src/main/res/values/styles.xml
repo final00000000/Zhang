@@ -8,4 +8,25 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>
+
+
+    <!--    车辆设置的按钮状态-->
+    <style name="common_switch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:switchMinWidth">1dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:thumb">@drawable/record_track_setting_switch_thumb_white</item>
+        <item name="android:track">@drawable/record_track_setting_switch_track_gray_green</item>
+    </style>
+
+    <style name="Button_16_Bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="txt12Color8C8C8E_999999">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_8C8C8E_999999</item>
+    </style>
 </resources>

@@ -10,7 +10,7 @@ object RollApiConstant {
     const val ROLL_APP_ID = "xjrrolsrof2dngr0"
     const val ROLL_APP_SECRET = "SXAzTTdWdHFsRTUybHpSS3IwRWRpdz09"
 
-    private const val HOST = "www.mxnzp.com"
+    const val HOST = "www.mxnzp.com"
     const val ROLL_BASE_URL = "https://${HOST}/api/"
 
     /*往年今日*/

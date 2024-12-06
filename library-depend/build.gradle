@@ -105,8 +105,9 @@ dependencies {
     api 'com.github.liangjingkanji:spannable:1.2.7'
 
     // Coil   https://github.com/coil-kt/coil
-    api 'io.coil-kt:coil:2.6.0'
-    api 'io.coil-kt:coil-gif:2.5.0'
+    api 'io.coil-kt.coil3:coil:3.0.4'
+    api 'io.coil-kt.coil3:coil-gif:3.0.4'
+    api 'io.coil-kt.coil3:coil-network-okhttp:3.0.4'
 
     // fastJson   https://github.com/alibaba/fastjson
 //    api 'com.alibaba:fastjson:2.0.45'
@@ -148,7 +149,16 @@ dependencies {
     api 'com.getui:gtc:3.2.16.0'  //个推核心组件
 
     //TheRouter https://github.com/HuolalaTech/hll-wp-therouter-android
-    //api "cn.therouter:router:1.2.1"
-    //kapt "cn.therouter:apt:1.2.1"
-    kapt 'androidx.databinding:databinding-compiler:8.2.0'
+    api "cn.therouter:router:1.2.2"
+    kapt "cn.therouter:apt:1.2.2"
+    kapt 'androidx.databinding:databinding-compiler:8.2.1'
+
+    api "com.tencent.tav:libpag:4.3.62"
+
+    api "com.blankj:utilcodex:1.31.1"
+
+    //原版：https://github.com/JeremyLiao/LiveEventBus
+    // 下面是适配了Android14
+    //https://github.com/michaellee123/LiveEventBus
+    api "com.github.michaellee123:LiveEventBus:1.8.14"
 }

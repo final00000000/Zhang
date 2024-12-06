@@ -22,8 +22,8 @@ import timber.log.Timber
  * Description :
  */
 class HomeViewModel : BaseViewModel() {
-    private var _homeLiveData = MutableLiveData<Triple<IPData, CityWeatherData, AccessorInfoData>>()
-    val homeLiveData: MutableLiveData<Triple<IPData, CityWeatherData, AccessorInfoData>> get() = _homeLiveData
+    private var _homeLiveData = MutableLiveData<Triple<IPData, CityWeatherData, AccessorInfoData>?>()
+    val homeLiveData: MutableLiveData<Triple<IPData, CityWeatherData, AccessorInfoData>?> get() = _homeLiveData
 
     override fun initViewModel() {
         getData()
@@ -37,6 +37,7 @@ class HomeViewModel : BaseViewModel() {
             val accessorInfo = Get<AccessorInfoData>(HanApiConstant.VISITOR_INFORMATION).await()
             _homeLiveData.value = Triple(ipData, cityWeatherData, accessorInfo)
         }.catch {
+            _homeLiveData.value = null
             Timber.d("测试_37：${it.message}")
         }
     }

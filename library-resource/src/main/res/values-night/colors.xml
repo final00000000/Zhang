@@ -324,4 +324,48 @@
     <color name="color_0DE0EB_464646">#464646</color>
     <!-- 主题色 -->
     <color name="color_FF5F00_FA7A2E">#FA7A2E</color>
+    <color name="color_DDE0EB_464646">#464646</color>
+    <color name="color_F3FDF9_1C2625">#1C2625</color>
+    <color name="color_0ED984_0ED984">#0ED984</color>
+    <color name="color_0ED984_2DE08F">#2DE08F</color>
+    <color name="color_D4D8E7_3E4047">#3E4047</color>
+    <color name="color_E6E9F3_292A2F">#292A2F</color>
+    <color name="color_F5F6FA_121212">#121212</color>
+    <color name="color_FF3535_10_FF455D_10">#1AFF455D</color>
+    <color name="color_FF3535_FF455D">#FF455D</color>
+    <color name="color_F7F8FB_0F1012">#0F1012</color>  <!-- 仪表盘色值 -->
+    <color name="dashboard_low_speed_color_4">#9904FFB4</color>
+    <color name="dashboard_low_speed_color_3">#9904F0FF</color>
+    <color name="dashboard_low_speed_color_2">#4D0BB6FF</color>
+    <color name="dashboard_low_speed_color_1">#00185084</color>
+
+    <color name="dashboard_low_speed_stroke_color_3">#00FFB2</color>
+    <color name="dashboard_low_speed_stroke_color_2">#00FFF0</color>
+    <color name="dashboard_low_speed_stroke_color_1">#0000CEFC</color>
+
+    <color name="dashboard_medium_speed_color_4">#9904FF87</color>
+    <color name="dashboard_medium_speed_color_3">#9904FFD2</color>
+    <color name="dashboard_medium_speed_color_2">#4D0BF0FF</color>
+    <color name="dashboard_medium_speed_color_1">#0000677D</color>
+
+    <color name="dashboard_medium_speed_stroke_color_3">#00FF75</color>
+    <color name="dashboard_medium_speed_stroke_color_2">#00FFF0</color>
+    <color name="dashboard_medium_speed_stroke_color_1">#0000CEFC</color>
+
+    <color name="dashboard_high_speed_color_4">#99FF843F</color>
+    <color name="dashboard_high_speed_color_3">#993A1C00</color>
+    <color name="dashboard_high_speed_color_2">#4D251604</color>
+    <color name="dashboard_high_speed_color_1">#001D0C01</color>
+
+    <color name="dashboard_high_speed_stroke_color_3">#FF8957</color>
+    <color name="dashboard_high_speed_stroke_color_2">#FFB546</color>
+    <color name="dashboard_high_speed_stroke_color_1">#00000000</color>
+    <color name="color_EDF6FF_182E42">#182E42</color>
+    <color name="color_FFFFFF_1B1C20">#1B1C20</color>
+    <color name="color_FFF5EB_2B1A0D">#2B1A0D</color>
+    <color name="color_edf5fc_1d2937">#1d2937</color>
+    <color name="color_white_black">#000000</color>
+    <color name="color_black_white">#FFFFFF</color>
+    <color name="color_black_5_white_5">#0DFFFFFF</color>
+    <color name="color_80858C_999999">#999999</color>
 </resources>

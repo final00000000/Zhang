@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_solid_color_white_1b1c20_top_radius_12"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="32dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@string/dashboard_setting_title"
+            android:textColor="@color/color_242942_White"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@+id/tv_title"
+            android:layout_alignEnd="@+id/tv_title"
+            android:layout_alignBottom="@id/tv_title"
+            android:src="@mipmap/icon_close" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_auto"
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/community_shape_f5f6fa_12dp"
+            android:paddingHorizontal="16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_auto_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/boot_automatically_records_track"
+                android:textColor="@color/color_242942_White"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/swi_auto_track"
+                style="@style/common_switch"
+                app:layout_constraintBottom_toBottomOf="@id/tv_auto_track"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_auto_track" />
+
+            <View
+                android:id="@+id/v_auto_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/color_e9e9ed_1b1c1e"
+                app:layout_constraintTop_toBottomOf="@id/tv_auto_track" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/boot_automatically_records_track_desc"
+                android:textColor="@color/color_8C8C8E"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/v_auto_line" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_compass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cl_auto"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/community_shape_f5f6fa_12dp"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_compass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/compass_title"
+                android:textColor="@color/color_242942_White"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/swi_compass"
+                style="@style/common_switch"
+                app:layout_constraintBottom_toBottomOf="@id/tv_compass"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_compass"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <View
+                android:id="@+id/v_compass_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12sp"
+                android:background="@color/color_e9e9ed_1b1c1e"
+                app:layout_constraintTop_toBottomOf="@id/tv_compass" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/compass_desc"
+                android:textColor="@color/color_8C8C8E"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/v_compass_line" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_steady"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_below="@id/cl_compass"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/community_shape_f5f6fa_12dp"
+            android:paddingHorizontal="16dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_steady_on_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/steady_on_screen"
+                android:textColor="@color/color_242942_White"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Switch
+                android:id="@+id/swi_steady"
+                style="@style/common_switch"
+                app:layout_constraintBottom_toBottomOf="@id/tv_steady_on_screen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_steady_on_screen" />
+
+            <View
+                android:id="@+id/v_steady_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_e9e9ed_1b1c1e"
+                app:layout_constraintTop_toBottomOf="@id/tv_steady_on_screen" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/steady_on_screen_desc"
+                android:textColor="@color/color_242942_White"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/v_steady_line" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_lock_screen"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_below="@id/cl_steady"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/community_shape_f5f6fa_12dp"
+            android:paddingHorizontal="16dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_lock_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/lock_screen_opens_the_dashboard"
+                android:textColor="@color/color_242942_White"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.zhang.myproject.resource.weiget.CommonSwitch
+                android:id="@+id/swi_lock_screen"
+                style="@style/common_switch"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/tv_lock_screen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_lock_screen" />
+
+            <View
+                android:id="@+id/v_lock_screen_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/color_e9e9ed_1b1c1e"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/tv_lock_screen" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/lock_screen_opens_the_dashboard_desc"
+                android:textColor="@color/color_242942_White"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/v_lock_screen_line" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_default_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cl_lock_screen"
+            android:layout_marginTop="16dp"
+            android:text="@string/default_view"
+            android:textColor="@color/color_242942_White"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <RadioGroup
+            android:id="@+id/gp_default_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_default_view"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_dashboard_mode"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/record_track_setting_pop_shape"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/dashboard_mode"
+                android:textColor="@color/color_0ed984_000000_selector"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_map_mode"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/record_track_setting_pop_shape"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/map_mode"
+                android:textColor="@color/color_0ed984_000000_selector"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_display_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gp_default_view"
+            android:layout_marginTop="16dp"
+            android:text="@string/display_mode"
+            android:textColor="@color/color_242942_White"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+
+        <RadioGroup
+            android:id="@+id/gp_show_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_display_mode"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/rb_following_system"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/record_track_setting_pop_shape"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/following_system"
+                android:textColor="@color/color_0ed984_000000_selector"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rb_light_mode"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/record_track_setting_pop_shape"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/user_light_mode"
+                android:textColor="@color/color_0ed984_000000_selector"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rb_dark_mode"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/record_track_setting_pop_shape"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/dark_mode"
+                android:textColor="@color/color_0ed984_000000_selector"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+</layout>

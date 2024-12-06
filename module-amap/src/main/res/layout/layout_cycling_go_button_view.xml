@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="32dp"
+        android:background="@mipmap/ic_action_start_bg"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="4dp"
+            android:src="@mipmap/icon_start_go" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_start"
+            style="@style/Button_16_Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="开始行程记录"
+            android:textColor="@color/color_242942_White" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/community_shape_f5f6fa_121212_radius_42dp"
+        android:drawableStart="@mipmap/icon_pause_20"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:paddingHorizontal="22dp"
+        android:text="@string/common_pause"
+        android:textColor="@color/color_242942_White"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_resume"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/community_shape_f5f6fa_121212_radius_42dp"
+        android:drawableStart="@mipmap/icon_play_back_20"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:paddingHorizontal="22dp"
+        android:text="@string/common_resume"
+        android:textColor="@color/color_242942_White"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <com.zhang.myproject.amap.weiget.RecordTrackSlideView
+        android:id="@+id/sl_finish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

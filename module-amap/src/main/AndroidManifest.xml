@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zhang.myproject.amap">
+
+    <permission
+        android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"
+        tools:ignore="ReservedSystemPermission" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> <!-- 用于开启 DEBUG 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 传感器采样速率 -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <!-- 如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
 
     <application>
         <activity
             android:name=".view.activity.SmoothMoveActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.RecordTrackActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <service
+            android:name=".view.service.RecordTrackService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location"
+            android:priority="1000" /> <!-- 定位需要的服务 适配Android Q需要加上android:foregroundServiceType="location" -->
+        <service
+            android:name="com.amap.api.location.APSService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
     </application>
 </manifest>

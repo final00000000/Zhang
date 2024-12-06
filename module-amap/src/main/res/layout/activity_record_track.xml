@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gp_map_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="map_view,yadea_navi_speed_view"
+            tools:visibility="visible" />
+
+        <com.amap.api.maps.TextureMapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="50dp" />
+
+        <org.libpag.PAGImageView
+            android:id="@+id/pag_dashboard_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <org.libpag.PAGImageView
+            android:id="@+id/pag_dashboard_bg1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="300dp"
+            android:visibility="invisible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_orientation_angle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="@color/color_242942_White"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/iv_back"
+            tools:text="北 0°" />
+
+        <com.zhang.myproject.amap.weiget.RecordTrackSpeedView
+            android:id="@+id/record_track_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_orientation_angle" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_geographic_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/record_track_speed">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_east_longitude"
+                    style="@style/txt12Color8C8C8E_999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    tools:text="东经120°30’2’’" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_northern_latitude"
+                    style="@style/txt12Color8C8C8E_999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    tools:text="北纬31°34’60’’" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_altitude"
+                style="@style/txt12Color8C8C8E_999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                tools:text="海拔：0m" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="45dp"
+            android:paddingStart="24dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_settings"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:src="@mipmap/icon_setting_route_path"
+            app:layout_constraintBottom_toBottomOf="@id/iv_doubt"
+            app:layout_constraintEnd_toStartOf="@id/iv_doubt"
+            app:layout_constraintTop_toTopOf="@id/iv_doubt" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_doubt"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@mipmap/icon_illustrate_24"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/cl_start_navi"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_map_location"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@mipmap/icon_cycling_go_my_location" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_mode"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cycling_go_shape_selector" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_start_navi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_solid_color_white_1b1c20_top_radius_12"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/gp_dashboard_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="ll_cycling_average_speed,ll_cycling_distance,ll_cycling_max_speed,ll_cycling_time" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_cycling_distance"
+                android:layout_width="0dp"
+                android:layout_height="83dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/corners_solid_gradient_color_f7f8fb_of1012_radius_8"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/ll_cycling_time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_distance_km"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/community_m"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="14sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/cycling_mileage"
+                    android:textColor="@color/color_80858C"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_cycling_time"
+                android:layout_width="0dp"
+                android:layout_height="83dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/corners_solid_gradient_color_f7f8fb_of1012_radius_8"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ll_cycling_distance"
+                app:layout_constraintTop_toTopOf="@id/ll_cycling_distance">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:text="00:00:00"
+                    android:textColor="@color/color_242942_White"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_time_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/cycling_duration"
+                    android:textColor="@color/color_80858C"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_cycling_average_speed"
+                android:layout_width="0dp"
+                android:layout_height="83dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/corners_solid_gradient_color_f7f8fb_of1012_radius_8"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/ll_cycling_max_speed"
+                app:layout_constraintStart_toStartOf="@id/ll_cycling_distance"
+                app:layout_constraintTop_toBottomOf="@id/ll_cycling_distance">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_av_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/user_speed_km"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="14sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/map_average_speed_tips"
+                    android:textColor="@color/color_80858C"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_cycling_max_speed"
+                android:layout_width="0dp"
+                android:layout_height="83dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/corners_solid_gradient_color_f7f8fb_of1012_radius_8"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ll_cycling_average_speed"
+                app:layout_constraintTop_toTopOf="@id/ll_cycling_average_speed">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_max_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/user_speed_km"
+                        android:textColor="@color/color_242942_White"
+                        android:textSize="14sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/maximum_speed"
+                    android:textColor="@color/color_80858C"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <com.zhang.myproject.amap.weiget.RecordTrackButtonView
+                android:id="@+id/action_button"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/ll_cycling_average_speed" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_too_fast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/too_fast_caution"
+            android:textColor="@color/color_FF3C53"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_back"
+            app:layout_constraintEnd_toStartOf="@id/iv_settings"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="@id/iv_back"
+            tools:visibility="visible" />
+
+        <com.zhang.myproject.amap.weiget.NavigationSpeedView
+            android:id="@+id/yadea_navi_speed_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/iv_back" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

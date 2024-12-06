@@ -110,6 +110,7 @@ private fun Application?.initAMap() {
 fun Application?.initLogcat() {
     this?.let {
         LogCat.setDebug(BuildConfig.DEBUG) // 全局开关
+        LogCat.tag = "测试"
     }
 }
 

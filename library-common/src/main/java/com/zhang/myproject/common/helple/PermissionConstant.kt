@@ -1,11 +1,7 @@
 package com.zhang.myproject.common.helple
 
 import android.Manifest
-import android.content.Context
 import android.os.Build
-import com.hjq.permissions.OnPermissionCallback
-import com.hjq.permissions.XXPermissions
-import com.zhang.myproject.base.utils.toast.Toasty
 
 /**
  * Date: 2023/9/15
@@ -29,4 +25,5 @@ object PermissionConstant {
             Manifest.permission.ACCESS_FINE_LOCATION
         )
     }
+    val SYSTEM_ALERT_WINDOW = mutableListOf(Manifest.permission.SYSTEM_ALERT_WINDOW)
 }

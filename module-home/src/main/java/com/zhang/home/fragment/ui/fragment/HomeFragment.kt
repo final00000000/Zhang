@@ -36,7 +36,9 @@ class HomeFragment : BaseVBVMFragment<FragmentHomeBinding, HomeViewModel>(R.layo
     override fun createObserver() {
         mViewModel.homeLiveData.observe(this) {
             finishLoading()
-            mViewBinding.tvIp.initHomeShowData(it.first, it.second, it.third)
+            it?.let {
+                mViewBinding.tvIp.initHomeShowData(it.first, it.second, it.third)
+            }
         }
     }
 

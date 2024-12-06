@@ -107,6 +107,12 @@ fun getScreenHeight(): Int {
 fun getMargin32(): Int = dpToPx(32f) * 2
 
 /**
+ * 获取margin32
+ * @return Int
+ */
+fun getMargin28(): Int = getScreenWidth() - (dpToPx(32f) * 2)
+
+/**
  * 计时器
  *
  * @param total Int 总时间

@@ -93,7 +93,7 @@ abstract class BaseVBVMActivity<VB : ViewBinding, VM : ViewModel>(@LayoutRes val
         // 数据观察
         createObserver()
 
-        startLoading()
+//        startLoading()
 
         NetworkManager.instance.mNetworkStateCallback.observeSticky(this) {
             onNetworkStateChanged(it)
